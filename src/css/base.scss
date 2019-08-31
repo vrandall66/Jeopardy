@@ -1,6 +1,20 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: pink;
+$primary-background: orange;
+$main-font:'Barlow',
+sans-serif;
+$header-font:'Monofett',
+cursive;
 
 body {
   background-color: $primary-background;
+  font-family: $main-font;
+
+}
+
+h1 {
+  font-family: $header-font;
+}
+
+table {
+  border: 2px solid brown;
 }
