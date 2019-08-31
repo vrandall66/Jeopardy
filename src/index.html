@@ -1,13 +1,70 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-    <title>Webpack Starter Kit</title>
+    <title>Throwback Trivia</title>
   </head>
   <body>
-    <h1>Webpack Starter Kit</h1>
-
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
-
-    <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
+    <div class='splash-page'>
+      <h1>Welcome To Throwback Trivia</h1>
+      <label for='player-one'>Player One Name</label>
+      <input type='text' class='player-one-name' id='player-one-name-js'>
+      <label for='player-two'>Player Two Name</label>
+      <input type='text' class='player-two-name' id='player-two-name-js'>
+      <label for='player-three'>Player Three Name</label>
+      <input type='text' class='player-three-name' id='player-three-name-js'>
+      <button class='submit-names'>Submit</button>
+    </div>
+    <main class='main'>
+      <h1>Throwback Trivia</h1>
+      <table>
+        <tr>
+          <td>Category 1</td>
+          <td>Category 2</td>
+          <td>Category 3</td>
+          <td>Category 4</td>
+        </tr>
+        <tr>
+          <td>100</td>
+          <td>100</td>
+          <td>100</td>
+          <td>100</td>
+        </tr>
+        <tr>
+          <td>200</td>
+          <td>200</td>
+          <td>200</td>
+          <td>200</td>
+        </tr>
+        <tr>
+          <td>300</td>
+          <td>300</td>
+          <td>300</td>
+          <td>300</td>
+        </tr>
+        <tr>
+          <td>400</td>
+          <td>400</td>
+          <td>400</td>
+          <td>400</td>
+        </tr>
+      </table>
+      <section>
+        <div>
+          <p class='player-one-display'></p>
+          <p class='player-one-score'></p>
+        </div>
+        <div>
+          <p class='player-two-display'></p>
+          <p class='player-two-score'></p>
+        </div>
+        <div>
+          <p class='player-three-display'></p>
+          <p class='player-three-score'></p>
+        </div>
+      </section>
+      <!-- <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px"> -->
+      
+      <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
+    </main>
   </body>
 </html>
