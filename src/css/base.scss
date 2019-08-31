@@ -1,5 +1,6 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: orange;
+$primary-background: #e59e17;
+$border-color: #e56517;
 $main-font:'Barlow',
 sans-serif;
 $header-font:'Monofett',
@@ -8,13 +9,39 @@ cursive;
 body {
   background-color: $primary-background;
   font-family: $main-font;
-
 }
 
 h1 {
+  color: brown;
   font-family: $header-font;
+  font-size: 4em;
+  letter-spacing: 2px;
+  text-align: center;
 }
 
 table {
-  border: 2px solid brown;
+  text-align: center;
+  width: 60%;
+}
+
+td, th {
+  border: 2px solid $border-color;
+  border-spacing: 0.5rem;
+}
+
+.splash-inputs {
+  display: table-caption;
+}
+
+.game-display {
+  text-align: center;
+  width: 100%;
+}
+
+.player-info {
+  border: 2px solid $border-color;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  width: 50%;
 }
