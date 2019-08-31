@@ -11,3 +11,18 @@ import './css/base.scss';
 import './images/turing-logo.png'
 
 console.log('This is the JavaScript entry file - your code begins here.');
+$('.splash-page').show()
+$('.main').hide()
+$('.submit-names').on('click', showMain)
+function showMain() {
+    $('.splash-page').hide()
+    $('.splash-page').fadeOut(40000)
+    $('.main').show()
+    $('.main').fadeIn(40000)
+    let playerOne = $('#player-one-name-js').val()
+    let playerTwo = $('#player-two-name-js').val()
+    let playerThree = $('#player-three-name-js').val()
+    $('.player-one-display').text(playerOne)
+    $('.player-two-display').text(playerTwo)
+    $('.player-three-display').text(playerThree)
+}
