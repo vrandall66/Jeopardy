@@ -12,9 +12,7 @@ import './images/turing-logo.png'
 
 console.log('This is the JavaScript entry file - your code begins here.');
 $('.splash-page').show()
-// $('.splash-page').fadeIn()
 $('.main').hide()
-// $('.main').fadeOut()
 $('.submit-names').on('click', showMain)
 function showMain() {
     $('.splash-page').hide()
