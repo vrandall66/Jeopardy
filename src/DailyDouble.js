@@ -1,8 +1,8 @@
 class DailyDouble {
   constructor() {
-     this.category;
-     this.clue;
-     this.wager = 0;
+    this.category;
+    this.clue;
+    this.wager = 0;
   }
 
   evaluateGuess() {
