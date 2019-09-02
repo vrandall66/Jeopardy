@@ -9,6 +9,9 @@ class Game {
     this.players = [];
     this.data = data;
     this.categories = [];
+    this.round1Categories = [];
+    this.round2Categories = [];
+    this.finalRoundCategory;
   };
 
   generatePlayers() {
@@ -16,15 +19,44 @@ class Game {
     return this.players;
   }
 
-  // generateClues() {
-
-  // }
   shuffleCategories() {
     // How do we write a test for a randomized array?? Do we not?
     const categories = Object.values(this.data.categories);
     this.categories = categories.sort(() => Math.random() - 0.5);
     return this.categories;
   }
+
+  generateRound1Categories() {
+   this.round1Categories = this.categories.splice(0, 4);
+   console.log('Round 1', this.round1Categories);
+  }
+
+  generateRound2Categories() {
+    this.generateRound1Categories();
+    console.log('Round 2', this.round2Categories = this.categories.splice(0, 4));
+  }
+
+  generateFinalRoundCategory() {
+    this.generateRound2Categories();
+    console.log('Final Round', this.finalRoundCategory = this.categories.splice(0, 1));
+  }
+  
+  generateCategoryNames() {
+
+  }
+
+  generateRound1Clues() {
+
+  }
+
+  generateRound2Clues() {
+
+  }
+
+  generateFinalRoundClue() {
+
+  }
+
 }
 
 export default Game;
