@@ -45,7 +45,6 @@ class Game {
     // console.log('Final Round', this.finalRoundCategory = this.categories.splice(0, 1));
   }
   
-
   generateCategoryNames() {
     // At a standstill, revisit to find corresponding keys and values within this.data.categories
     console.log(this.randomCategories)
@@ -62,6 +61,10 @@ class Game {
   // generateFinalRoundClue() {
 
   // }
+
+  startNewRound() {
+    this.round = new Round(this.players);
+  }
 
   startNewRound() {
     this.round = new Round(this.players);
