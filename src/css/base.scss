@@ -44,7 +44,7 @@ td, th {
   justify-content: center;
 }
 
-.submit-names {
+button {
   background-color: #325602;
   border-color: #325602;
   border-radius: 20px;
@@ -52,7 +52,7 @@ td, th {
   font-family: $main-font;
   font-size: 1.5em;
   height: 40px;
-  width: 100px;
+  width: 200px;
 }
 
 .game-display {
@@ -79,6 +79,7 @@ td, th {
   animation: 2s ease popout;
   border: 2px solid $border-color;
   margin-top: 100px;
+  padding: 20px;
   text-align: center;
   width: 200px;
 }
