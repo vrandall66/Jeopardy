@@ -2,12 +2,11 @@
 // round 2 will have to instantiate daily double twice
 
 class Round {
-  constructor(players) {
-    // this.board = game.board;
+  constructor(game) {
     this.turnCounter = 0;
-    this.clues = [];
-    this.players = players;
-    this.currentPlayer = 0;
+    this.clues = game.clues
+    this.players = game.players;
+    this.currentPlayer = null;
     this.player1Score;
     this.player2Score;
     this.player3Score;
@@ -16,6 +15,8 @@ class Round {
   //   takeTurn() {
     //     this.turnCounter++
     //     OR change players 
+    //     handler function
+    //    
   //   }
 
   //   evaluateGuess() {

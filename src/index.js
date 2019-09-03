@@ -14,11 +14,11 @@ import data from '../sampleData/sampleData';
 console.log('This is the JavaScript entry file - your code begins here.');
 $('.splash-page').show();
 $('.main').hide();
-$('.submit-names').on('click', showMain);
+$('.submit-names').on('click', startGame);
 let game;
 let data;
 
-function showMain() {
+function startGame() {
     $('.splash-page').hide();
     $('.splash-page').fadeOut(40000);
     $('.main').show();
@@ -27,8 +27,10 @@ function showMain() {
     let playerTwo = $('#player-two-name-js').val();
     let playerThree = $('#player-three-name-js').val();
     game = new Game(playerOne, playerTwo, playerThree, data);
+    game.startGame();
     console.log('data index', data);
     $('.player-one-display').text(playerOne);
     $('.player-two-display').text(playerTwo);
     $('.player-three-display').text(playerThree);
 }
+
