@@ -18,24 +18,21 @@ describe('Game', () => {
     ]);
   });
 
-  it.skip('should have categories', () => {
-    expect(game.shuffleCategories()).to.eql('')
-  });
-
-  it('should generate categories for Round 1',() => {
-    expect(game.generateRound1Categories()).to.eql('');
-  });
-
-  it('should generate categories for Round 2', () => {
-    expect(game.generateRound2Categories()).to.eql('');
-  });
-
-  it('should generate a category for the final round', () => {
-    expect(game.generateFinalRoundCategory()).to.eql('');
-  });
-
   it('should generate category names', () => {
-    expect(game.generateCategoryNames()).to.eql('');
+    expect(game.generateCategoryObjects()).to.eql([{
+      1:1
+    }, {
+      2:2
+    }, {
+      3:3
+    }, {
+      4:4
+    }]);
+  });
+
+  it('should generate clues given a category ID', () => {
+    game.generateCategoryObjects();
+    expect(game.generateClues()).to.eql('');
   });
 
   it('should generate clues given a category ID', () => {

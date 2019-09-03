@@ -10,17 +10,20 @@ class Game {
     this.players = [];
     this.data = data;
     this.categories;
+    this.categoryNames;
+    this.clues;
     this.categoryIds;
     this.randomCategories = Object.entries(this.data.categories).sort(
       (a, b) => 0.5 - Math.random());
     this.roundCounter = 0;
     this.round;
+    this.categoryObjects;
 
   };
 
   startGame() {
     this.generatePlayers();
-    this.generateCategoryNames();
+    this.generateCategoryObjects();
     this.generateClues();
     this.startNewRound();
   };
@@ -30,29 +33,31 @@ class Game {
     return this.players;
   };
 
-  generateCategoryNames() {
+
+  generateCategoryObjects() {
     this.categories = this.randomCategories.splice(0, 4);
-    let categoryNames = this.categories.map(category => {
-      return category[0];
-    });
-    // this.generateClues();
-    return categoryNames;
-  };
+    this.categoryObjects = this.categories.map(category => {
+      return {category: category[0], id: category[1]};
+  });
+    return this.categoryObjects
+  }
+
+  generateCategories() {
+    this.categoryNames = this.categoryObjects.map(category => {
+      return category.category
+    })
+  }
 
   generateClues() {
-    let match
-    this.categoryIds = this.categories.map(categoryId => {
-      return categoryId[1];
-    });
-    console.log(this.categoryIds)
-    return this.categoryIds.reduce((acc, id) => {
-      this.data.clues.filter(clue => {
-        match = clue.categoryId === id
-      });
-      acc.push(match)
-      console.log(acc)
-    }, []);
-  }
+    this.categoryObjects.forEach(category => {
+      this.clues = this.data.clues.filter(clue => {
+        return clue.categoryId === category.id
+      })
+      // console.log('categoryObj', this.categoryObjects)
+      // console.log('clues', this.clues)
+      return this.clues
+    })
+}
 
   // generateRound2Clues() {
 
@@ -65,13 +70,13 @@ class Game {
   startNewRound() {
     this.roundCounter++;
     if (this.roundCounter < 2) {
-      this.round = new Round(this.players);
+      this.round = new Round(this.players, this.clues, this.categoryNames);
     };
     this.startFinalRound();
   };
 
   startFinalRound() {
-
+// do this
   };
 
 }

@@ -32,5 +32,6 @@ function startGame() {
     $('.player-one-display').text(playerOne);
     $('.player-two-display').text(playerTwo);
     $('.player-three-display').text(playerThree);
+    $('.category1').text()
 }
 
