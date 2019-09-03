@@ -1,4 +1,5 @@
 import Player from "./Player";
+import Round from "./Round";
 
 class Game {
   constructor(p1, p2, p3, data) {
@@ -8,10 +9,13 @@ class Game {
     this.player3 = new Player(p3);
     this.players = [];
     this.data = data;
-    this.categories = [];
+    // this.categories = [];
     this.round1Categories = [];
     this.round2Categories = [];
     this.finalRoundCategory;
+    this.randomCategories = Object.entries(this.data.categories).sort(
+        (a, b) => 0.5 - Math.random());
+    this.round;
   };
 
   generatePlayers() {
@@ -28,22 +32,24 @@ class Game {
 
   generateRound1Categories() {
    this.round1Categories = this.categories.splice(0, 4);
-   console.log('Round 1', this.round1Categories);
+  //  console.log('Round 1', this.round1Categories);
   }
 
   generateRound2Categories() {
     this.generateRound1Categories();
-    console.log('Round 2', this.round2Categories = this.categories.splice(0, 4));
+    // console.log('Round 2', this.round2Categories = this.categories.splice(0, 4));
   }
 
   generateFinalRoundCategory() {
     this.generateRound2Categories();
-    console.log('Final Round', this.finalRoundCategory = this.categories.splice(0, 1));
+    // console.log('Final Round', this.finalRoundCategory = this.categories.splice(0, 1));
   }
   
-  // generateCategoryNames() {
 
-  // }
+  generateCategoryNames() {
+    // At a standstill, revisit to find corresponding keys and values within this.data.categories
+    console.log(this.randomCategories)
+  }
 
   // generateRound1Clues() {
 
@@ -56,6 +62,10 @@ class Game {
   // generateFinalRoundClue() {
 
   // }
+
+  startNewRound() {
+    this.round = new Round(this.players);
+  }
 
 }
 
