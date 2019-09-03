@@ -23,23 +23,18 @@ describe('Game', () => {
   });
 
   it('should generate categories for Round 1',() => {
-    game.shuffleCategories();
     expect(game.generateRound1Categories()).to.eql('');
   });
 
   it('should generate categories for Round 2', () => {
-    game.shuffleCategories();
     expect(game.generateRound2Categories()).to.eql('');
   });
 
   it('should generate a category for the final round', () => {
-    game.shuffleCategories();
     expect(game.generateFinalRoundCategory()).to.eql('');
   });
 
   it('should generate category names', () => {
-    game.shuffleCategories();
-    game.generateRound1Categories();
     expect(game.generateCategoryNames()).to.eql('');
   });
 });
