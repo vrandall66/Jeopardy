@@ -3,8 +3,8 @@ class Player {
     this.name = name;
     this.score = 0;
   }
-
-
+  
 }
 
 export default Player;
+
