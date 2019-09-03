@@ -36,4 +36,10 @@ describe('Game', () => {
     game.shuffleCategories();
     expect(game.generateFinalRoundCategory()).to.eql('');
   });
+
+  it('should generate category names', () => {
+    game.shuffleCategories();
+    game.generateRound1Categories();
+    expect(game.generateCategoryNames()).to.eql('');
+  });
 });
