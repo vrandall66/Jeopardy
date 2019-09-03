@@ -41,21 +41,21 @@ class Game {
     console.log('Final Round', this.finalRoundCategory = this.categories.splice(0, 1));
   }
   
-  generateCategoryNames() {
+  // generateCategoryNames() {
 
-  }
+  // }
 
-  generateRound1Clues() {
+  // generateRound1Clues() {
 
-  }
+  // }
 
-  generateRound2Clues() {
+  // generateRound2Clues() {
 
-  }
+  // }
 
-  generateFinalRoundClue() {
+  // generateFinalRoundClue() {
 
-  }
+  // }
 
 }
 
