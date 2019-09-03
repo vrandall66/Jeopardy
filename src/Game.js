@@ -47,10 +47,6 @@ class Game {
     this.round = new Round(this.players);
   }
 
-  startNewRound() {
-    this.round = new Round(this.players);
-  }
-
 }
 
 export default Game;
