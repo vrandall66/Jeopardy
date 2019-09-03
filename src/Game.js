@@ -9,10 +9,12 @@ class Game {
     this.player3 = new Player(p3);
     this.players = [];
     this.data = data;
-    this.categories = [];
+    // this.categories = [];
     this.round1Categories = [];
     this.round2Categories = [];
     this.finalRoundCategory;
+    this.randomCategories = Object.entries(this.data.categories).sort(
+        (a, b) => 0.5 - Math.random());
     this.round;
   };
 
@@ -45,25 +47,23 @@ class Game {
   
   generateCategoryNames() {
     // At a standstill, revisit to find corresponding keys and values within this.data.categories
-    this.round1Categories;
-    let categoryNames = Object.keys(this.data.categories);
-    console.log('round 1 cats', this.round1Categories);
-    let round1 = round1Names.map(name => {
-      console.log('return', name[this.generateRound1Categories]);
-    });
-    console.log(round1);
+    console.log(this.randomCategories)
   }
 
-  generateRound1Clues() {
+  // generateRound1Clues() {
 
-  }
+  // }
 
-  generateRound2Clues() {
+  // generateRound2Clues() {
 
-  }
+  // }
 
-  generateFinalRoundClue() {
+  // generateFinalRoundClue() {
 
+  // }
+
+  startNewRound() {
+    this.round = new Round(this.players);
   }
 
   startNewRound() {
