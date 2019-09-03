@@ -7,7 +7,7 @@ class Round {
     this.turnCounter = 0;
     this.clues = [];
     this.players = players;
-    this.currentPlayer = 0;
+    this.currentPlayer = null;
     this.player1Score;
     this.player2Score;
     this.player3Score;
@@ -16,6 +16,8 @@ class Round {
   //   takeTurn() {
     //     this.turnCounter++
     //     OR change players 
+    //     handler function
+    //    
   //   }
 
   //   evaluateGuess() {
