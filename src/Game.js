@@ -10,11 +10,9 @@ class Game {
     this.players = [];
     this.data = data;
     this.categories;
-<<<<<<< HEAD
+    this.categoryNames;
     this.clues;
-=======
     this.categoryIds;
->>>>>>> b65cfa9fa0bcdd94ac54289fae7ddbc8593ab1ec
     this.randomCategories = Object.entries(this.data.categories).sort(
       (a, b) => 0.5 - Math.random());
     this.roundCounter = 0;
@@ -25,7 +23,7 @@ class Game {
 
   startGame() {
     this.generatePlayers();
-    this.generateCategoryNames();
+    this.generateCategoryObjects();
     this.generateClues();
     this.startNewRound();
   };
@@ -44,13 +42,19 @@ class Game {
     return this.categoryObjects
   }
 
+  generateCategories() {
+    this.categoryNames = this.categoryObjects.map(category => {
+      return category.category
+    })
+  }
+
   generateClues() {
     this.categoryObjects.forEach(category => {
       this.clues = this.data.clues.filter(clue => {
         return clue.categoryId === category.id
       })
-      console.log('categoryObj', this.categoryObjects)
-      console.log('clues', this.clues)
+      // console.log('categoryObj', this.categoryObjects)
+      // console.log('clues', this.clues)
       return this.clues
     })
 }
@@ -66,7 +70,7 @@ class Game {
   startNewRound() {
     this.roundCounter++;
     if (this.roundCounter < 2) {
-      this.round = new Round(this.players, this.clues);
+      this.round = new Round(this.players, this.clues, this.categoryNames);
     };
     this.startFinalRound();
   };
