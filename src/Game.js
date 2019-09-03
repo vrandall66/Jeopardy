@@ -10,12 +10,17 @@ class Game {
     this.players = [];
     this.data = data;
     this.categories;
+<<<<<<< HEAD
     this.clues;
+=======
+    this.categoryIds;
+>>>>>>> b65cfa9fa0bcdd94ac54289fae7ddbc8593ab1ec
     this.randomCategories = Object.entries(this.data.categories).sort(
       (a, b) => 0.5 - Math.random());
     this.roundCounter = 0;
     this.round;
     this.categoryObjects;
+
   };
 
   startGame() {
@@ -29,6 +34,7 @@ class Game {
     this.players.push(this.player1, this.player2, this.player3);
     return this.players;
   };
+
 
   generateCategoryObjects() {
     this.categories = this.randomCategories.splice(0, 4);
@@ -48,6 +54,14 @@ class Game {
       return this.clues
     })
 }
+
+  // generateRound2Clues() {
+
+  // }
+
+  // generateFinalRoundClue() {
+
+  // }
 
   startNewRound() {
     this.roundCounter++;

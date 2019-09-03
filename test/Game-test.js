@@ -34,4 +34,9 @@ describe('Game', () => {
     game.generateCategoryObjects();
     expect(game.generateClues()).to.eql('');
   });
+
+  it('should generate clues given a category ID', () => {
+    game.generateCategoryNames();
+    expect(game.generateClues()).to.eql('');
+  });
 });

@@ -4,8 +4,13 @@
 class Round {
   constructor(game) {
     this.turnCounter = 0;
+<<<<<<< HEAD
     this.clues = game.clues
     this.players = game.players;
+=======
+    this.clues = [];
+    this.players = players;
+>>>>>>> b65cfa9fa0bcdd94ac54289fae7ddbc8593ab1ec
     this.currentPlayer = null;
     this.player1Score;
     this.player2Score;
