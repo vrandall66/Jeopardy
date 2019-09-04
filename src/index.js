@@ -17,12 +17,13 @@ console.log('This is the JavaScript entry file - your code begins here.');
 $('.splash-page').show();
 $('.main').hide();
 $('.clue-box').hide();
-$('.submit-names').on('click', startGame);
 let game;
 
+$('.submit-names').on('click', startGame);
 function startGame() {
     domUpdates.showMain();
-    new Audio('../src/funk.wav').play();
+    let audio = new Audio('../src/funk.mp3');
+    audio.play();
     let playerOne = $('#player-one-name-js').val();
     let playerTwo = $('#player-two-name-js').val();
     let playerThree = $('#player-three-name-js').val();
@@ -31,9 +32,8 @@ function startGame() {
     domUpdates.appendPlayerNames(playerOne, playerTwo, playerThree);
     domUpdates.appendCategoryNames(game.categoryNames);
     domUpdates.firstRowClues(game.clueByCategory);
-
     // console.log('data index', data);
-}
+};
 
  $('tr > td').click((e) => {
      e.preventDefault();
