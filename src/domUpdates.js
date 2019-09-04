@@ -3,9 +3,9 @@ import $ from 'jquery';
 const domUpdates = {
     
     appendPlayerNames(playerOne, playerTwo, playerThree) {
-         $('.player-one-display').text(playerOne);
-         $('.player-two-display').text(playerTwo);
-         $('.player-three-display').text(playerThree);
+        $('.player-one-display').text(playerOne);
+        $('.player-two-display').text(playerTwo);
+        $('.player-three-display').text(playerThree);
     },
 
     showMain() {

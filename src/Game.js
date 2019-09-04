@@ -1,6 +1,5 @@
 import Player from "./Player";
 import Round from "./Round";
-import domUpdates from "../src/domUpdates";
 class Game {
   constructor(p1, p2, p3, data) {
     this.player1 = new Player(p1);
@@ -24,13 +23,13 @@ class Game {
     this.generateCategoryNamesAndIds();
     this.generateCategories();
     this.generateClues(100);
-    domUpdates.firstRowClues(this.cluesByCategory);
+    this.sortClues();
     this.generateClues(200);
-    domUpdates.firstRowClues(this.cluesByCategory);
+    this.sortClues();
     this.generateClues(300);
-    domUpdates.firstRowClues(this.cluesByCategory);
+    this.sortClues();
     this.generateClues(400);
-    domUpdates.firstRowClues(this.cluesByCategory);
+    this.sortClues();
     // this.startNewRound();
   };
 
@@ -50,11 +49,10 @@ class Game {
   generateCategories() {
     this.categoryNames = this.categoryNamesAndIds.map(category => {
     let rex = /([A-Z])([A-Z])([a-z])|([a-z])([A-Z])/g;
-      console.log('please', category.category.replace(rex, '$1$4 $2$3$5').toUpperCase());
-      console.log(category.category)
-      return this.categoryNames;
+      return category.category.replace(rex, '$1$4 $2$3$5').toUpperCase();
     });
-   }
+    return this.categoryNames;
+  }
 
   generateClues(pointVal) {
     this.categoryNamesAndIds.forEach(category => {
@@ -65,15 +63,18 @@ class Game {
         return clue.pointValue === pointVal;
       });
       this.cluesByCategory.push(pointValue);
+      return this.cluesByCategory
     });
+  }
+
+  sortCategories() {
     this.cluesByCategory.sort((a, b) => {
-      b.categoryId - a.categoryId;
+      return a.categoryId - b.categoryId;
     });
-    return this.cluesByCategory;
+      return this.cluesByCategory;
   };
   // console.log('categoryObj', this.categoryNamesAndIds)
   // console.log('clues', this.clues)
-
 
   startNewRound() {
     this.roundCounter++;
