@@ -35,6 +35,7 @@ describe('Game', () => {
     expect(game.generateClues(100)).to.eql('');
   });
 
+
   it('should generate the category name', () => {
     game.generateCategoryNamesAndIds();
     expect(game.generateCategories()).to.eql('')

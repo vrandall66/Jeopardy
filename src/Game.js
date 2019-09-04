@@ -49,10 +49,12 @@ class Game {
 
   generateCategories() {
     this.categoryNames = this.categoryNamesAndIds.map(category => {
-      return category.category
+    let rex = /([A-Z])([A-Z])([a-z])|([a-z])([A-Z])/g;
+      console.log('please', category.category.replace(rex, '$1$4 $2$3$5').toUpperCase());
+      console.log(category.category)
+      return this.categoryNames;
     });
-    return this.categoryNames;
-  };
+   }
 
   generateClues(pointVal) {
     this.categoryNamesAndIds.forEach(category => {
@@ -71,6 +73,7 @@ class Game {
   };
   // console.log('categoryObj', this.categoryNamesAndIds)
   // console.log('clues', this.clues)
+
 
   startNewRound() {
     this.roundCounter++;
