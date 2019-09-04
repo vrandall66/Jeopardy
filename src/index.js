@@ -11,18 +11,22 @@ import './css/base.scss';
 import './images/turing-logo.png'
 import Game from './Game';
 import data from '../sampleData/sampleData';
+import Round from '../src/Round';
+
 console.log('This is the JavaScript entry file - your code begins here.');
 $('.splash-page').show();
 $('.main').hide();
+$('.clue-box').hide();
 $('.submit-names').on('click', startGame);
 let game;
-let data;
+let round;
 
 function startGame() {
     $('.splash-page').hide();
-    $('.splash-page').fadeOut(40000);
+    $('.splash-page').fadeOut();
     $('.main').show();
-    $('.main').fadeIn(40000);
+    $('.main').fadeIn();
+    $('.clue-box').hide()
     let playerOne = $('#player-one-name-js').val();
     let playerTwo = $('#player-two-name-js').val();
     let playerThree = $('#player-three-name-js').val();
@@ -32,6 +36,11 @@ function startGame() {
     $('.player-one-display').text(playerOne);
     $('.player-two-display').text(playerTwo);
     $('.player-three-display').text(playerThree);
-    $('.category1').text()
 }
 
+$('tr > td').on('click', showClue);
+function showClue() {
+    $('.main').hide();
+    $('.clue-box').show();
+    $('.clue-box').fadeIn();
+}

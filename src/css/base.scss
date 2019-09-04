@@ -1,14 +1,16 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
 $primary-background: #e59e17;
-$border-color: #e56517;
+$border-color: #325602;
 $main-font:'Barlow',
 sans-serif;
 $header-font:'Monofett',
 cursive;
 
 body {
-  background-color: $primary-background;
+  background-image: url('../images/orange.svg');
+  background-size: cover;
   font-family: $main-font;
+  width: 100%;
 }
 
 h1 {
@@ -20,17 +22,37 @@ h1 {
 }
 
 table {
+  background-color: #3a6402;
   text-align: center;
-  width: 60%;
+  opacity: 0.95;
+  width: 99%;
 }
 
 td, th {
   border: 2px solid $border-color;
   border-spacing: 0.5rem;
+  height: 50px;
+}
+
+.splash-page {
+  text-align: center;
 }
 
 .splash-inputs {
-  display: table-caption;
+  margin: 23px;
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  background-color: #325602;
+  border-color: #325602;
+  border-radius: 20px;
+  color: white;
+  font-family: $main-font;
+  font-size: 1.5em;
+  height: 40px;
+  width: 200px;
 }
 
 .game-display {
@@ -42,6 +64,50 @@ td, th {
   border: 2px solid $border-color;
   display: flex;
   justify-content: space-between;
+  margin-left: 225px;
+  margin-top: 20px;
   padding: 10px;
-  width: 50%;
+  width: 70%;
+}
+
+.clue-box {
+  text-align: -webkit-center;
+  width: 100%;
+}
+
+.clue {
+  animation: 2s ease popout;
+  border: 2px solid $border-color;
+  margin-top: 100px;
+  padding: 20px;
+  text-align: center;
+  width: 200px;
+}
+
+@keyframes popout {
+  from {
+    transform: scale(0)
+  }
+
+  80% {
+    transform: scale(1.2)
+  }
+
+  to {
+    transform: scale(1)
+  }
+}
+
+@-webkit-keyframes popout {
+  from {
+    -webkit-transform: scale(0)
+  }
+
+  80% {
+    -webkit-transform: scale(1.2)
+  }
+
+  to {
+    -webkit-transform: scale(1)
+  }
 }
