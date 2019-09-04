@@ -1,6 +1,6 @@
 import Player from "./Player";
 import Round from "./Round";
-
+import domUpdates from "../src/domUpdates";
 class Game {
   constructor(p1, p2, p3, data) {
     this.clues;
@@ -15,6 +15,7 @@ class Game {
     this.categoryIds;
     this.randomCategories = Object.entries(this.data.categories).sort(
       (a, b) => 0.5 - Math.random());
+    this.clueByCategory = [];
     this.roundCounter = 0;
     this.round;
     this.categoryObjects;
@@ -24,8 +25,13 @@ class Game {
   startGame() {
     this.generatePlayers();
     this.generateCategoryObjects();
-    this.generateClues();
-    this.startNewRound();
+    this.generateCategories();
+    this.generateClues(100);
+    domUpdates.firstRowClues(this.clueByCategory)
+    this.generateClues(200);
+    this.generateClues(300);
+    this.generateClues(400);
+    // this.startNewRound();
   };
 
   generatePlayers() {
@@ -39,32 +45,37 @@ class Game {
     this.categoryObjects = this.categories.map(category => {
       return {category: category[0], id: category[1]};
   });
-    return this.categoryObjects
-  }
+    return this.categoryObjects;
+  };
 
   generateCategories() {
     this.categoryNames = this.categoryObjects.map(category => {
       return category.category
-    })
-  }
+    });
+    return this.categoryNames;
+    // console.log(this.categoryNames)
+  };
 
-  generateClues() {
+  generateClues(pointVal) {
     this.categoryObjects.forEach(category => {
       this.clues = this.data.clues.filter(clue => {
-        return clue.categoryId === category.id
-      })
-      // console.log('categoryObj', this.categoryObjects)
-      // console.log('clues', this.clues)
-      return this.clues
-    })
-}
-
+        return clue.categoryId === category.id;
+      });
+      let pointValue = this.clues.find(clue => {
+        return clue.pointValue === pointVal;
+      });
+      this.clueByCategory.push(pointValue);
+    });
+    this.clueByCategory.sort((a, b) => {
+      b.categoryId - a.categoryId
+    });
+  };
+  // console.log('categoryObj', this.categoryObjects)
+  // console.log('clues', this.clues)
   // generateRound2Clues() {
-
   // }
 
   // generateFinalRoundClue() {
-
   // }
 
   startNewRound() {

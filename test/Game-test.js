@@ -32,16 +32,17 @@ describe('Game', () => {
 
   it.skip('should generate clues for the given categories', () => {
     game.generateCategoryObjects();
-    expect(game.generateClues()).to.eql('');
+    expect(game.generateClues(100)).to.eql('');
   });
 
-  it.skip('should generate clues given a category ID', () => {
-    game.generateCategoryObjects();
-    expect(game.generateClues()).to.eql('');
-  });
-
-  it.skip('should generate the category name', () => {
+  it('should generate the category name', () => {
     game.generateCategoryObjects();
     expect(game.generateCategories()).to.eql('')
   });
+
+  it('should generate clues given a point value', () => {
+    game.generateCategoryObjects();
+    expect(game.generateClues(100)).to.eql([1,2,3,4]);
+  });
+
 });

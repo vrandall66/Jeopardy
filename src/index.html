@@ -2,11 +2,12 @@
 <html lang="en-US">
   <head>
     <link href="https://fonts.googleapis.com/css?family=Barlow|Monofett&display=swap" rel="stylesheet">
-    <title>Throwback Trivia</title>
+    <link href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap" rel="stylesheet">    <title>Throwback Trivia</title>
   </head>
   <body>
     <div class='splash-page'>
       <h1>Welcome To Throwback Trivia</h1>
+      <!-- <img src='./images/books.svg' alt='a stack of books'/> -->
       <div class='splash-inputs'>
         <label for='player-one'>Player One Name </label>
         <input type='text' class='player-one-name' id='player-one-name-js'>
@@ -55,14 +56,17 @@
       <div class='player-info'>
         <div>
           <p class='player-one-display'></p>
+          Score:
           <p class='player-one-score'></p>
         </div>
         <div>
           <p class='player-two-display'></p>
+          Score:
           <p class='player-two-score'></p>
         </div>
         <div>
           <p class='player-three-display'></p>
+          Score:
           <p class='player-three-score'></p>
         </div>
       </div>
@@ -73,7 +77,8 @@
     </main>
           <div class='clue-box'>
             <div class='clue'>
-              <h1> How's This For A Clue? </h1>
+              <h2> How's This For A Clue? </h2>
+              <p id='clue'></p>
               <label for='answer'>Your Answer Here</label>
               <input type='text' class='answer-input' id='answer-input-js'>
               <button> Give It A Go </button>
