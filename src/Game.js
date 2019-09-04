@@ -53,7 +53,7 @@ class Game {
       this.clues = this.data.clues.filter(clue => {
         return clue.categoryId === category.id
       })
-      // console.log('categoryObj', this.categoryObjects)
+      console.log('categoryObj', this.categoryObjects)
       // console.log('clues', this.clues)
       return this.clues
     })
@@ -63,9 +63,10 @@ class Game {
 
   // }
 
-  // generateFinalRoundClue() {
-
-  // }
+    splitCategoryNames() {
+      console.log(this.categoryNames);
+      'ThisIsTheStringToSplit'.split(/(?=[A-Z])/); 
+    }
 
   startNewRound() {
     this.roundCounter++;
