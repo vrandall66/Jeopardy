@@ -5,6 +5,7 @@ $main-font:'Barlow',
 sans-serif;
 $header-font:'Monofett',
 cursive;
+$table-color: #3a6402;
 
 body {
   background-image: url('../images/orange.svg');
@@ -21,8 +22,15 @@ h1 {
   text-align: center;
 }
 
+h2 {
+  color: brown;
+  font-family: 'Fredoka One',
+  cursive;
+  font-size: 3em;
+}
+
 table {
-  background-color: #3a6402;
+  background-color: $table-color;
   text-align: center;
   opacity: 0.95;
   width: 99%;
@@ -39,14 +47,27 @@ td, th {
 }
 
 .splash-inputs {
+  font-family: 'Fredoka One', cursive;
+  font-size: 2em;
   margin: 23px;
-  display: flex;
-  justify-content: center;
+  padding: 25px;
+  display: grid;
+  margin-left: 650px;
+  width: 20%;
+}
+
+input {
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  margin-bottom: 30px;
+}
+
+label {
+  margin-bottom: 20px;
 }
 
 button {
-  background-color: #325602;
-  border-color: #325602;
+  background-color: $border-color;
+  border-color: $border-color;
   border-radius: 20px;
   color: white;
   font-family: $main-font;
@@ -64,6 +85,9 @@ button {
   border: 2px solid $border-color;
   display: flex;
   justify-content: space-between;
+  font-family: 'Fredoka One',
+  cursive;
+  font-size: 2em;
   margin-left: 225px;
   margin-top: 20px;
   padding: 10px;
@@ -78,10 +102,14 @@ button {
 .clue {
   animation: 2s ease popout;
   border: 2px solid $border-color;
-  margin-top: 100px;
+  margin-top: 70px;
   padding: 20px;
   text-align: center;
   width: 200px;
+}
+
+.answer-input {
+  margin-bottom: 10px;
 }
 
 @keyframes popout {

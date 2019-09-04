@@ -1,31 +1,37 @@
 import Player from "./Player";
 import Round from "./Round";
-
+import domUpdates from "../src/domUpdates";
 class Game {
   constructor(p1, p2, p3, data) {
-    this.clues;
     this.player1 = new Player(p1);
     this.player2 = new Player(p2);
     this.player3 = new Player(p3);
     this.players = [];
     this.data = data;
-    this.categories;
-    this.categoryNames;
-    this.clues;
-    this.categoryIds;
     this.randomCategories = Object.entries(this.data.categories).sort(
       (a, b) => 0.5 - Math.random());
+    this.categories;
+    this.categoryNamesAndIds;
+    this.categoryNames;
+    this.clues;
+    this.cluesByCategory = [];
     this.roundCounter = 0;
     this.round;
-    this.categoryObjects;
-
   };
 
   startGame() {
     this.generatePlayers();
-    this.generateCategoryObjects();
-    this.generateClues();
-    this.startNewRound();
+    this.generateCategoryNamesAndIds();
+    this.generateCategories();
+    this.generateClues(100);
+    domUpdates.firstRowClues(this.cluesByCategory);
+    this.generateClues(200);
+    domUpdates.firstRowClues(this.cluesByCategory);
+    this.generateClues(300);
+    domUpdates.firstRowClues(this.cluesByCategory);
+    this.generateClues(400);
+    domUpdates.firstRowClues(this.cluesByCategory);
+    // this.startNewRound();
   };
 
   generatePlayers() {
@@ -33,39 +39,38 @@ class Game {
     return this.players;
   };
 
-
-  generateCategoryObjects() {
+  generateCategoryNamesAndIds() {
     this.categories = this.randomCategories.splice(0, 4);
-    this.categoryObjects = this.categories.map(category => {
+    this.categoryNamesAndIds = this.categories.map(category => {
       return {category: category[0], id: category[1]};
   });
-    return this.categoryObjects
-  }
+    return this.categoryNamesAndIds;
+  };
 
   generateCategories() {
-    this.categoryNames = this.categoryObjects.map(category => {
+    this.categoryNames = this.categoryNamesAndIds.map(category => {
       return category.category
-    })
-  }
+    });
+    return this.categoryNames;
+  };
 
-  generateClues() {
-    this.categoryObjects.forEach(category => {
-      this.clues = this.data.clues.filter(clue => {
-        return clue.categoryId === category.id
-      })
-      // console.log('categoryObj', this.categoryObjects)
-      // console.log('clues', this.clues)
-      return this.clues
-    })
-}
-
-  // generateRound2Clues() {
-
-  // }
-
-  // generateFinalRoundClue() {
-
-  // }
+  generateClues(pointVal) {
+    this.categoryNamesAndIds.forEach(category => {
+    let clues = this.data.clues.filter(clue => {
+        return clue.categoryId === category.id;
+      });
+      let pointValue = clues.find(clue => {
+        return clue.pointValue === pointVal;
+      });
+      this.cluesByCategory.push(pointValue);
+    });
+    this.cluesByCategory.sort((a, b) => {
+      b.categoryId - a.categoryId;
+    });
+    return this.cluesByCategory;
+  };
+  // console.log('categoryObj', this.categoryNamesAndIds)
+  // console.log('clues', this.clues)
 
   startNewRound() {
     this.roundCounter++;

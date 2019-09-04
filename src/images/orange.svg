@@ -3,9 +3,16 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 1920 1080" style="enable-background:new 0 0 1920 1080;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:#D86B21;stroke:#000000;stroke-miterlimit:10;}
-	.st1{fill:#FBB03B;stroke:#F7931E;stroke-miterlimit:10;}
+	.st0{fill:#E08C1E;stroke:#E08C1E;stroke-miterlimit:10;}
+	.st1{fill:#C7AF42;stroke:#C7AF42;stroke-miterlimit:10;}
+	.st2{fill:#E0BB1E;}
 </style>
 <rect x="0.5" y="-0.5" class="st0" width="1919" height="1080"/>
 <polygon class="st1" points="1917.99,1.52 798.56,1080.82 1500.52,1499.43 "/>
+<g>
+	
+		<rect x="428.72" y="475.26" transform="matrix(0.7177 -0.6963 0.6963 0.7177 -17.3887 1036.7245)" class="st2" width="1682.61" height="129.1"/>
+	<path class="st2" d="M1828.93-91.73l89.2,91.94L711.18,1171.24l-89.2-91.94L1828.93-91.73 M1828.95-93.14L620.56,1079.28
+		l90.59,93.37L1919.54,0.23L1828.95-93.14L1828.95-93.14z"/>
+</g>
 </svg>
