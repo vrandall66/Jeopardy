@@ -46,4 +46,10 @@ describe('Game', () => {
     expect(game.generateClues(100)).to.eql([1,2,3,4]);
   });
 
+  it('Should sort categories by id', () => {
+    game.generateCategoryNamesAndIds();
+    game.generateClues(100);
+    expect(game.sortCategories()).to.eql('');
+  });
+
 });

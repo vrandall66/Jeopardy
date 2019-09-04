@@ -20,10 +20,8 @@ const domUpdates = {
         $('.clue-box').fadeIn();
     },
 
-    firstRowClues(clues) {
-        $('#cat1row1').click((e) => {
-            $('#clue').text(clues[0])
-        });
+    firstRowClues() {
+       
     },
 
     appendCategoryNames(categories) {
