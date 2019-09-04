@@ -35,19 +35,14 @@ describe('Game', () => {
     expect(game.generateClues()).to.eql('');
   });
 
-  it.skip('should generate clues given a category ID', () => {
+  it('should generate clues given a category ID', () => {
     game.generateCategoryObjects();
     expect(game.generateClues()).to.eql('');
   });
 
-  it.skip('should generate the category name', () => {
+  it('should generate the category name', () => {
     game.generateCategoryObjects();
     expect(game.generateCategories()).to.eql('')
   });
-
-  it('should split category name strings at end of word', () => {
-    game.splitCategoryNames();
-    expect(game.splitCategoryNames()).to.eql('');
-  })
   
 });

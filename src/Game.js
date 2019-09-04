@@ -44,29 +44,28 @@ class Game {
 
   generateCategories() {
     this.categoryNames = this.categoryObjects.map(category => {
-      return category.category
-    })
-  }
+      let rex = /([A-Z])([A-Z])([a-z])|([a-z])([A-Z])/g;
+      console.log('please', category.category.replace(rex, '$1$4 $2$3$5').toUpperCase());
+      console.log(this.categoryNames);
+    });
+    }
+
 
   generateClues() {
     this.categoryObjects.forEach(category => {
       this.clues = this.data.clues.filter(clue => {
         return clue.categoryId === category.id
       })
-      console.log('categoryObj', this.categoryObjects)
+      // console.log('categoryObj', this.categoryObjects)
+      // console.log(typeof this.categoryObjects[category]);
       // console.log('clues', this.clues)
       return this.clues
-    })
+    });
 }
 
   // generateRound2Clues() {
 
   // }
-
-    splitCategoryNames() {
-      console.log(this.categoryNames);
-      'ThisIsTheStringToSplit'.split(/(?=[A-Z])/); 
-    }
 
   startNewRound() {
     this.roundCounter++;
