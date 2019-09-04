@@ -31,18 +31,19 @@ describe('Game', () => {
   });
 
   it.skip('should generate clues for the given categories', () => {
-    game.generateCategoryObjects();
-    expect(game.generateClues()).to.eql('');
+    game.generateCategoryNamesAndIds();
+    expect(game.generateClues(100)).to.eql('');
   });
 
-  it('should generate clues given a category ID', () => {
-    game.generateCategoryObjects();
-    expect(game.generateClues()).to.eql('');
-  });
 
   it('should generate the category name', () => {
-    game.generateCategoryObjects();
+    game.generateCategoryNamesAndIds();
     expect(game.generateCategories()).to.eql('')
   });
-  
+
+  it('should generate clues given a point value', () => {
+    game.generateCategoryNamesAndIds();
+    expect(game.generateClues(100)).to.eql([1,2,3,4]);
+  });
+
 });
