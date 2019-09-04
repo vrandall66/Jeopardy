@@ -30,18 +30,24 @@ describe('Game', () => {
     }]);
   });
 
+  it.skip('should generate clues for the given categories', () => {
+    game.generateCategoryObjects();
+    expect(game.generateClues()).to.eql('');
+  });
+
   it.skip('should generate clues given a category ID', () => {
     game.generateCategoryObjects();
     expect(game.generateClues()).to.eql('');
   });
 
-  it('should generate clues given a category ID', () => {
-    game.generateCategoryNames();
-    expect(game.generateClues()).to.eql('');
+  it.skip('should generate the category name', () => {
+    game.generateCategoryObjects();
+    expect(game.generateCategories()).to.eql('')
   });
 
   it('should split category name strings at end of word', () => {
     game.splitCategoryNames();
     expect(game.splitCategoryNames()).to.eql('');
   })
+  
 });
