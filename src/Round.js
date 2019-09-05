@@ -7,17 +7,17 @@ class Round {
     this.clues = clues;
     this.categories = categories;
     this.players = players;
-    this.currentPlayer = null;
+    this.currentPlayer = this.players[0];
     this.player1Score;
     this.player2Score;
     this.player3Score;
   }
 
-//   evaluateGuess(guess) {
-// deal with formatting the user input aka guess
-// if user guess is wrong, incorrectGuess();
-// if user guess is right, correctGuess()
-//   }
+  //   evaluateGuess(guess) {
+  // deal with formatting the user input aka guess
+  // if user guess is wrong, incorrectGuess();
+  // if user guess is right, correctGuess()
+  //   }
 
   // incorrectGuess() {
   // decrement score
@@ -32,20 +32,31 @@ class Round {
   // }
 
   //   endRound() {
-    //     this.turnCounter = 0
+  //     this.turnCounter = 0
   //   }
 
-  // changePlayer() {
-    // at the beginning of each round
-    // this.currentPlayer = this.players[0];
-    // At the end of a turn
-    // Change player will be called
-    // this.currentPlayer++ ??
-  // }
+  changePlayer() {
+    if (this.currentPlayer === this.players[0]) {
+      this.turnCounter++;
+      return this.currentPlayer = this.players[1];
+    }
+    if (this.currentPlayer === this.players[1]) {
+      this.turnCounter++;
+      return this.currentPlayer = this.players[2]
+    }
+    if (this.currentPlayer === this.players[2]) {
+      this.resetPlayerTurns();
+    }
+  }
+
+  resetPlayerTurns() {
+    this.turnCounter = 0;
+    return this.currentPlayer = this.players[0]
+  }
 
   //   generateBoard() {
-// 
+  // 
   //   }
 
 }
-  export default Round;
+export default Round;
