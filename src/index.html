@@ -6,22 +6,27 @@
   </head>
   <body>
     <div class='splash-page'>
+      <div id="discoBallLight"></div>
+      <div id="discoBall">
+        <div id="discoBallMiddle"></div>
+      </div>
       <h1>Welcome To Throwback Trivia</h1>
       <!-- <img src='./images/books.svg' alt='a stack of books'/> -->
-      <div class='splash-inputs'>
-        <label for='player-one'>Player One Name </label>
-        <input type='text' class='player-one-name' id='player-one-name-js'>
-        <label for='player-two'>Player Two Name </label>
-        <input type='text' class='player-two-name' id='player-two-name-js'>
-        <label for='player-three'>Player Three Name </label>
-        <input type='text' class='player-three-name' id='player-three-name-js'>
+                  <div class='splash-inputs'>
+          <label for='player-one'>Player One Name </label>
+          <input type='text' class='player-one-name' id='player-one-name-js'>
+          <label for='player-two'>Player Two Name </label>
+          <input type='text' class='player-two-name' id='player-two-name-js'>
+          <label for='player-three'>Player Three Name </label>
+          <input type='text' class='player-three-name' id='player-three-name-js'>
+        </div>
+        <button class='submit-names'>Submit</button>
       </div>
-      <button class='submit-names'>Submit</button>
-    </div>
     <main class='main'>
       <h1>Throwback Trivia</h1>
+
       <!-- <section class ='game-display'> -->
-      <table>
+      <table id='game-board'>
         <tr>
           <td id='category1'>Category 1</td>
           <td id='category2'>Category 2</td>
