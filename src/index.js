@@ -35,7 +35,11 @@ function startGame() {
     // console.log('data index', data);
 };
 
- $('tr > td').click((e) => {
+    $('tr > td').click((e) => {
      e.preventDefault();
      domUpdates.showClue();
- });
+    });
+
+    
+
+

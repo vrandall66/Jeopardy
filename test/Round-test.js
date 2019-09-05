@@ -36,4 +36,8 @@ describe('Round', () => {
   it('should have categories', () => {
     expect(round.categories).to.eql(['lifeSciences'])
   });
+
+  it.only('should return true if the guess matches the clue answer', () => { 
+    expect(round.returnCorrectGuess('yellow journalism')).to.eql('yellow journalism')
+  });
 });

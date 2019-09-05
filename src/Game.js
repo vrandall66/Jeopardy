@@ -1,6 +1,5 @@
 import Player from "./Player";
 import Round from "./Round";
-import domUpdates from "../src/domUpdates";
 class Game {
   constructor(p1, p2, p3, data) {
     this.player1 = new Player(p1);
@@ -24,13 +23,13 @@ class Game {
     this.generateCategoryNamesAndIds();
     this.generateCategories();
     this.generateClues(100);
-    domUpdates.firstRowClues(this.cluesByCategory);
+    this.sortClues();
     this.generateClues(200);
-    domUpdates.firstRowClues(this.cluesByCategory);
+    this.sortClues();
     this.generateClues(300);
-    domUpdates.firstRowClues(this.cluesByCategory);
+    this.sortClues();
     this.generateClues(400);
-    domUpdates.firstRowClues(this.cluesByCategory);
+    this.sortClues();
     // this.startNewRound();
   };
 
@@ -53,7 +52,7 @@ class Game {
       return category.category.replace(rex, '$1$4 $2$3$5').toUpperCase();
     });
     return this.categoryNames;
-   }
+  }
 
   generateClues(pointVal) {
     this.categoryNamesAndIds.forEach(category => {
@@ -66,16 +65,14 @@ class Game {
       this.cluesByCategory.push(pointValue);
       return this.cluesByCategory
     });
-  };
+  }
 
   sortCategories() {
     this.cluesByCategory.sort((a, b) => {
-      a.categoryId - b.categoryId;
+      return a.categoryId - b.categoryId;
     });
-    // console.log(this.cluesByCategory)
-    return this.cluesByCategory;
+      return this.cluesByCategory;
   };
-
 
   startNewRound() {
     this.roundCounter++;

@@ -13,31 +13,53 @@ class Round {
     this.player3Score;
   }
 
-    // takeTurn() {
-    //     // this.turnCounter++
-    //     // OR change players 
-    //     // handler function
-    // }
+//   evaluateGuess(guess) {
+// deal with formatting the user input aka guess
+// if user guess is wrong, incorrectGuess();
+// if user guess is right, correctGuess()
+//   }
 
-  //   evaluateGuess() {
-  //     if answer includes ... then increase score 
-  //     && change player
-  //   }
+  incorrectGuess() {
+    return this.clues.forEach( clue => {
+      if (clue.answer !== guess) {
+        console.log("here!!!", true)
+        console.log("points", this.player1Score -= clue.pointValue)
+        return false
+      } 
+     })
+  // decrement score
+  // update DOM
+  // boo-hoo
+  }
+
+  returnCorrectGuess(guess) {
+   let matchingClue = this.clues.filter( clue => {
+     if (clue.answer === guess) {
+       return clue
+     } 
+    })
+      return matchingClue[0].answer;
+      //this.curentPlayer.score += matchingClue[0].pointValue
+  // update DOM
+  // YIPEE!!!
+  }
+
+  
 
   //   endRound() {
     //     this.turnCounter = 0
   //   }
 
-  changePlayer() {
+  // changePlayer() {
     // at the beginning of each round
     // this.currentPlayer = this.players[0];
     // At the end of a turn
     // Change player will be called
-    // ?? this.currentPlayer++ ??
-  }
+    // this.currentPlayer++ ??
+  // }
 
   //   generateBoard() {
-
+// 
   //   }
 
 }
