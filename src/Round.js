@@ -19,11 +19,13 @@ class Round {
   // if user guess is right, correctGuess()
   //   }
 
+
   assessIncorrectGuess(guess) {
     this.clues.filter(clue => {
       let newScore;
       if (guess !== clue.answer) {
         newScore = this.currentPlayer.score = this.currentPlayer.score - clue.pointValue
+
 
       }
       this.changePlayer();

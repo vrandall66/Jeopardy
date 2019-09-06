@@ -45,7 +45,6 @@ describe('Round', () => {
     expect(round.returnCorrectGuess('yellow journalism')).to.eql('yellow journalism')
   });
 
-
   it('should start each round at Player 1', () => {
     expect(round.turnCounter).to.eql(0);
     expect(round.currentPlayer).to.eql(round.players[0]);
@@ -67,5 +66,9 @@ describe('Round', () => {
     round.changePlayer();
     expect(round.resetPlayerTurns()).to.eql({ name: 'Vanessa', score: 0 })
     expect(round.turnCounter).to.eql(0);
+<<<<<<< HEAD
   });
+=======
+  })
+>>>>>>> refs/remotes/origin/master
 });
