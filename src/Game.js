@@ -23,13 +23,13 @@ class Game {
     this.generateCategoryNamesAndIds();
     this.generateCategories();
     this.generateClues(100);
-    this.sortClues();
+    // this.sortClues();
     this.generateClues(200);
-    this.sortClues();
+    // this.sortClues();
     this.generateClues(300);
-    this.sortClues();
+    // this.sortClues();
     this.generateClues(400);
-    this.sortClues();
+    // this.sortClues();
     // this.startNewRound();
   };
 

@@ -32,6 +32,7 @@
     "webpack-dev-server": "^3.1.14"
   },
   "dependencies": {
-    "jquery": "^3.4.1"
+    "jquery": "^3.4.1",
+    "motion-ui": "^2.0.3"
   }
 }
