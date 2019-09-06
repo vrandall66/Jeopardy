@@ -19,32 +19,34 @@ class Round {
   // if user guess is right, correctGuess()
   //   }
 
-
   assessIncorrectGuess(guess) {
-    this.clues.filter(clue => {
+   this.clues.filter(clue => {
       let newScore;
       if (guess !== clue.answer) {
         newScore = this.currentPlayer.score = this.currentPlayer.score - clue.pointValue
-
-
       }
-      this.changePlayer();
-      console.log(typeof(newScore))
       return newScore
     })
+    return this.currentPlayer.score
   // update DOM
   // boo-hoo
   }
 
-  returnCorrectGuess(guess) {
-   let matchingClue = this.clues.filter( clue => {
+  changePlayerWhenIncorrect() {
+    this.assessIncorrectGuess('');
+    this.changePlayer();
+    return this.currentPlayer
+  }
+
+  assessCorrectGuess(guess) {
+    this.clues.filter( clue => {
      if (clue.answer === guess) {
-       return clue
-     } 
+       this.currentPlayer.score += clue.pointValue
+      }
+      return this.currentPlayer.score
     })
-      this.changePlayer();
-      return matchingClue[0].answer;
-      //this.curentPlayer.score += matchingClue[0].pointValue
+    this.changePlayer();
+    return this.currentPlayer
   // update DOM
   // YIPEE!!!
   }
