@@ -37,7 +37,7 @@ describe('Round', () => {
     expect(round.categories).to.eql(['lifeSciences'])
   });
 
-  it('should decrement the current player\'s score if they answe incorrectly' , () => {
+  it('should decrement the current player\'s score if they answer incorrectly' , () => {
     expect(round.assessIncorrectGuess('hi')).to.equal(-400)
   })
 
@@ -71,5 +71,5 @@ describe('Round', () => {
     round.changePlayer();
     expect(round.resetPlayerTurns()).to.eql({ name: 'Vanessa', score: 0 })
     expect(round.turnCounter).to.eql(0);
-  });
+  })
 });

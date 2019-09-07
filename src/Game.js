@@ -1,5 +1,7 @@
 import Player from "./Player";
 import Round from "./Round";
+import domUpdates from "./domUpdates";
+
 class Game {
   constructor(p1, p2, p3, data) {
     this.player1 = new Player(p1);
@@ -16,19 +18,21 @@ class Game {
     this.cluesByCategory = [];
     this.roundCounter = 0;
     this.round;
+    this.gameData = [];
   };
 
   startGame() {
     this.generatePlayers();
     this.generateCategoryNamesAndIds();
     this.generateCategories();
-    this.generateClues(100);
+    this.getGameData();
+    // this.generateClues(100);
     // this.sortClues();
-    this.generateClues(200);
+    // this.generateClues(200);
     // this.sortClues();
-    this.generateClues(300);
+    // this.generateClues(300);
     // this.sortClues();
-    this.generateClues(400);
+    // this.generateClues(400);
     // this.sortClues();
     // this.startNewRound();
   };
@@ -41,38 +45,88 @@ class Game {
   generateCategoryNamesAndIds() {
     this.categories = this.randomCategories.splice(0, 4);
     this.categoryNamesAndIds = this.categories.map(category => {
-      return {category: category[0], id: category[1]};
-  });
+      return { category: category[0], id: category[1] };
+    });
+    console.log(this.categoryNamesAndIds);
     return this.categoryNamesAndIds;
   };
 
   generateCategories() {
     this.categoryNames = this.categoryNamesAndIds.map(category => {
-    let rex = /([A-Z])([A-Z])([a-z])|([a-z])([A-Z])/g;
+      let rex = /([A-Z])([A-Z])([a-z])|([a-z])([A-Z])/g;
       return category.category.replace(rex, '$1$4 $2$3$5').toUpperCase();
     });
     return this.categoryNames;
   }
 
-  generateClues(pointVal) {
-    this.categoryNamesAndIds.forEach(category => {
-    let clues = this.data.clues.filter(clue => {
-        return clue.categoryId === category.id;
+  // generateClues(pointVal) {
+  //   this.categoryNamesAndIds.forEach(category => {
+  //     let clues = this.data.clues.filter(clue => {
+  //       return clue.categoryId === category.id;
+  //     });
+  //     let pointValue = clues.find(clue => {
+  //       return clue.pointValue === pointVal;
+  //     });
+  //     this.cluesByCategory.push(pointValue);
+  //     return this.cluesByCategory;
+  //   });
+  // }
+
+  getGameData() {
+    this.gameData = this.data && this.categoryNamesAndIds.map(cat => {
+      const clues = this.getCatClues(cat.id);
+      return ({
+        id: cat.id,
+        name: cat.category,
+        clues
       });
-      let pointValue = clues.find(clue => {
-        return clue.pointValue === pointVal;
-      });
-      this.cluesByCategory.push(pointValue);
-      return this.cluesByCategory
-    });
+    })
+    console.log('line 84', this.gameData);
+    domUpdates.assignClues(this.gameData);
   }
 
-  sortCategories() {
-    this.cluesByCategory.sort((a, b) => {
-      return a.categoryId - b.categoryId;
+  getCatClues(id) {
+    const clue1Index = this.data.clues.findIndex(clue => clue.categoryId === id && clue.pointValue === 100);
+    const clue2Index = this.data.clues.findIndex(clue => clue.categoryId === id && clue.pointValue === 200);
+    const clue3Index = this.data.clues.findIndex(clue => clue.categoryId === id && clue.pointValue === 300);
+    const clue4Index = this.data.clues.findIndex(clue => clue.categoryId === id && clue.pointValue === 400);
+
+    console.log(this.data.clues[clue1Index]);
+
+    const result = ({
+      100: {
+        question: this.data.clues[clue1Index].question,
+        answer: this.data.clues[clue1Index].answer
+      },
+      200: {
+        question: this.data.clues[clue2Index].question,
+        answer: this.data.clues[clue2Index].answer
+      },
+      300: {
+        question: this.data.clues[clue3Index].question,
+        answer: this.data.clues[clue3Index].answer
+      },
+      400: {
+        question: this.data.clues[clue4Index].question,
+        answer: this.data.clues[clue4Index].answer
+      },
     });
-      return this.cluesByCategory;
-  };
+    // I THINK vv this vv was causing reload issues
+    // Probably 20% of the time, functions would have undefined data
+    // this.data.clues.splice(clue1Index, 1);
+    // this.data.clues.splice(clue2Index, 2);
+    // this.data.clues.splice(clue3Index, 3);
+    // this.data.clues.splice(clue4Index, 4);
+
+    return result;
+  }
+
+  // sortCategories() {
+  //   this.cluesByCategory.sort((a, b) => {
+  //     return a.categoryId - b.categoryId;
+  //   });
+  //   return this.cluesByCategory;
+  // };
 
   startNewRound() {
     this.roundCounter++;
@@ -83,7 +137,7 @@ class Game {
   };
 
   startFinalRound() {
-// do this
+    // do this
   };
 
 }
