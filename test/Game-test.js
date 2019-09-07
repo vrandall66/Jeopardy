@@ -18,7 +18,7 @@ describe('Game', () => {
     ]);
   });
 
-  it.skip('should generate category names', () => {
+  it('should generate category names', () => {
     expect(game.generateCategoryObjects()).to.eql([{
       1:1
     }, {
@@ -30,7 +30,7 @@ describe('Game', () => {
     }]);
   });
 
-  it.skip('should generate clues for the given categories', () => {
+  it('should generate clues for the given categories', () => {
     game.generateCategoryNamesAndIds();
     expect(game.generateClues(100)).to.eql('');
   });
@@ -50,6 +50,10 @@ describe('Game', () => {
     game.generateCategoryNamesAndIds();
     game.generateClues(100);
     expect(game.sortCategories()).to.eql('')
+  })
+
+  it('should get Game Data', () => {
+    expect(game.getGameData()).to.eql('')
   })
 
 });
