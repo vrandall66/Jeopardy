@@ -37,13 +37,18 @@ describe('Round', () => {
     expect(round.categories).to.eql(['lifeSciences'])
   });
 
-  it('should decrement the current player\'s score and change player' , () => {
+  it('should decrement the current player\'s score if they answer incorrectly' , () => {
     expect(round.assessIncorrectGuess('hi')).to.equal(-400)
   })
 
-  it('should return true if the guess matches the clue answer', () => { 
-    expect(round.returnCorrectGuess('yellow journalism')).to.eql('yellow journalism')
+  it('should return the updated player object', () => { 
+    expect(round.assessCorrectGuess('yellow journalism')).to.eql({ name: 'Naomi', score: 0 })
   });
+
+  it('should change players after an incorrect guess', () => {
+    round.assessIncorrectGuess('');
+    expect(round.changePlayerWhenIncorrect()).to.eql({ name: 'Naomi', score: 0 })
+  })
 
   it('should start each round at Player 1', () => {
     expect(round.turnCounter).to.eql(0);
