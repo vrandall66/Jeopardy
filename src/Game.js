@@ -73,8 +73,6 @@ class Game {
     });
       return this.cluesByCategory;
   };
-  // console.log('categoryObj', this.categoryNamesAndIds)
-  // console.log('clues', this.clues)
 
   startNewRound() {
     this.roundCounter++;
