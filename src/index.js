@@ -13,14 +13,15 @@ import Game from './Game';
 import data from '../sampleData/sampleData';
 import domUpdates from './domUpdates';
 
-console.log('This is the JavaScript entry file - your code begins here.');
+// console.log('This is the JavaScript entry file - your code begins here.');
 $('.splash-page').show();
 $('.main').hide();
 $('.clue-box').hide();
 
 let game;
 
-$('.submit-names').on('click', startGame);
+let startButton = $('.submit-names')
+startButton.on('click', startGame);
 
 function startGame() {
     domUpdates.showMain();
@@ -31,9 +32,11 @@ function startGame() {
     let playerThree = $('#player-three-name-js').val();
     game = new Game(playerOne, playerTwo, playerThree, data);
     game.startGame();
+    console.log(createGameBoard())
+    // domUpdates.createBoard();
     domUpdates.appendPlayerNames(playerOne, playerTwo, playerThree);
     domUpdates.appendCategoryNames(game.categoryNames);
-    domUpdates.firstRowClues(game.clueByCategory);
+    // domUpdates.firstRowClues(game.clueByCategory);
     MotionUI.animateIn('#game-board', 'fade-in');
     // console.log('data index', data);
 };
@@ -103,7 +106,29 @@ function randomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-
-
-
-
+function createGameBoard() {
+    game.gameData.forEach(category => {
+        let categoryContainer = $('<div>', {
+            class: 'trialClue',
+            id: category.name
+        });
+        let categoryName = $('<div>', {
+            text: category.name,
+            class: 'categoryName',
+        })
+        categoryContainer.append(categoryName)
+        for (let [key, value] of Object.entries(category.clues)) {
+            console.log('value', value)
+            let categoryData = $('<div>', {
+                text: key,
+                id: key,
+                class: 'categoryData',
+                click: function () {
+                    domUpdates.showClue(value)
+                }
+            });
+            categoryContainer.append(categoryData)
+        }
+        domUpdates.createBoard(categoryContainer)
+    });
+}
