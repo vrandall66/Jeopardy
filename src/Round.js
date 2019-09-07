@@ -21,16 +21,18 @@ class Round {
 
 
   assessIncorrectGuess(guess) {
-    this.clues.filter(clue => {
+    const result = this.clues.filter(clue => {
       let newScore;
       if (guess !== clue.answer) {
-        newScore = this.currentPlayer.score = this.currentPlayer.score - clue.pointValue
-
+        newScore = this.currentPlayer.score = this.currentPlayer.score - clue.pointValue;
+        console.log('new score', newScore);
+        return newScore;
 
       }
       this.changePlayer();
       console.log(typeof(newScore))
-      return newScore
+      console.log('newScore 2.0', newScore);
+      console.log('result', result);
     })
   // update DOM
   // boo-hoo

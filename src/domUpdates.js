@@ -25,11 +25,21 @@ const domUpdates = {
     },
 
     appendCategoryNames(categories) {
-        console.log('categories', categories)
         $('#category1').text(categories[0]);
         $('#category2').text(categories[1]);
         $('#category3').text(categories[2]);
         $('#category4').text(categories[3]);
+    },
+
+    assignClues(gameData) {
+        console.log(gameData[0].id);
+        $('td:contains("100")').each((index, td) => {
+            console.log(td, index)
+            // td.data('data-clue-id', gameData[index].id);
+            // how to create new attribute using jquery
+                // how to refer to an item within a loop
+        });
+        console.log($('td'));
     }
 }
 
