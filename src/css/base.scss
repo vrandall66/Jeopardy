@@ -1,11 +1,6 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: #e59e17;
-$border-color: #325602;
-$main-font:'Barlow',
-sans-serif;
-$header-font:'Monofett',
-cursive;
-$table-color: #3a6402;
+@import 'variables';
+@import 'mixins';
 
 body {
   background-image: url('../images/orange.svg');
@@ -15,18 +10,16 @@ body {
 }
 
 h1 {
-  color: brown;
+  color: $header-color;
   font-family: $header-font;
   font-size: 4em;
   letter-spacing: 2px;
+  margin-bottom: 20px;
   text-align: center;
-  animation: opacityPulse 1s ease-out;
-  animation-iteration-count: infinite;
-  opacity: 0;
 }
 
 h2 {
-  color: brown;
+  color: $header-color;
   font-family: 'Fredoka One',
   cursive;
   font-size: 3em;
@@ -34,6 +27,7 @@ h2 {
 
 table {
   background-color: $table-color;
+  color: white;
   text-align: center;
   opacity: 0.95;
   width: 99%;
@@ -46,23 +40,27 @@ td, th {
 }
 
 .splash-page {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   text-align: center;
 }
 
 .splash-inputs {
+  display: flex;
+  flex-direction: column;
   font-family: 'Fredoka One', cursive;
   font-size: 2em;
   margin: 23px;
+  margin-top: 70px;
   padding: 25px;
-  display: grid;
-  margin-left: 650px;
-  margin-top: 100px;
   width: 20%;
 }
 
 input {
   box-shadow: 0 0 5px rgba(81, 203, 238, 1);
   margin-bottom: 30px;
+  padding: 5px;
 }
 
 label {
@@ -70,6 +68,8 @@ label {
 }
 
 button {
+  animation: opacityPulse 1s ease-out;
+  animation-iteration-count: infinite;
   background-color: $border-color;
   border-color: $border-color;
   border-radius: 20px;
@@ -78,6 +78,9 @@ button {
   font-size: 1.5em;
   height: 40px;
   width: 200px;
+  &:hover {
+  border: dotted 3px $button-hover-color;
+  } 
 }
 
 .game-display {
@@ -86,16 +89,21 @@ button {
 }
 
 .player-info {
-  border: 4px solid $border-color;
   display: flex;
   justify-content: space-between;
+  padding: 20px;
+  width: 96%;
+}
+
+.player-display {
+  background-color: $header-color;
+  box-shadow: 3px 3px 5px 6px $box-shadow-color;
+  color: white;
   font-family: 'Fredoka One',
-  cursive;
+    cursive;
   font-size: 2em;
-  margin-left: 225px;
   margin-top: 20px;
-  padding: 10px;
-  width: 70%;
+  padding: 50px 50px;
 }
 
 .clue-box {
@@ -105,16 +113,16 @@ button {
 
 .clue {
   animation: 2s ease popout;
-  border: 2px solid $border-color;
+  box-shadow: 3px 3px 5px 6px $box-shadow-color; 
   margin-top: 70px;
   padding: 20px;
   text-align: center;
   width: 200px;
+  input {
+    margin-bottom: 10px;
+  }
 }
 
-.answer-input {
-  margin-bottom: 10px;
-}
 
 @keyframes popout {
   from {
@@ -130,23 +138,9 @@ button {
   }
 }
 
-@-webkit-keyframes popout {
-  from {
-    -webkit-transform: scale(0)
-  }
-
-  80% {
-    -webkit-transform: scale(1.2)
-  }
-
-  to {
-    -webkit-transform: scale(1)
-  }
-}
-
 @keyframes opacityPulse {
   0% {
-    opacity: 0.8;
+    opacity: 0.85;
   }
 
   50% {
@@ -154,12 +148,9 @@ button {
   }
 
   100% {
-    opacity: 0.8;
+    opacity: 0.85;
   }
 }
-
-
-// 
 
 @-webkit-keyframes rotateDiscoBall {
   0% {
@@ -279,7 +270,6 @@ button {
   background: linear-gradient(top, #111, #333);
   -webkit-animation: rotateDiscoBallMiddle 18s linear infinite;
   animation: rotateDiscoBallMiddle 18s linear infinite;
-
 }
 
 a {

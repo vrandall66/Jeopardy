@@ -1,0 +1,12 @@
+@import 'variables';
+
+@mixin level-one-header($color, $font, $size, $spacing) {
+    color: $color;
+    font-family: $font;
+    font-size: $size;
+    letter-spacing: $size;
+}
+
+// h1 {
+//     @include level-one-header($header-color, $header-font, 4em, 2px);
+// }
