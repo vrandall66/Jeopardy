@@ -1,7 +1,7 @@
 class DailyDouble {
-  constructor() {
-    this.category;
-    this.clue;
+  constructor(category, clue) {
+    this.category = category;
+    this.clue = clue;
     this.wager = 0;
   }
 

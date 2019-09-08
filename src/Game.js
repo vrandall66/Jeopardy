@@ -1,6 +1,7 @@
 import Player from "./Player";
 import Round from "./Round";
 import domUpdates from "./domUpdates";
+import FinalRound from "./FinalRound";
 
 class Game {
   constructor(p1, p2, p3, data) {
@@ -19,6 +20,7 @@ class Game {
     this.roundCounter = 0;
     this.round;
     this.gameData = [];
+    this.finalRound;
   };
 
   startGame() {
@@ -97,7 +99,7 @@ class Game {
   };
 
   startFinalRound() {
-    // do this
+    this.finalRound = new FinalRound(category, clue);
   };
 
 }

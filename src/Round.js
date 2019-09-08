@@ -11,6 +11,7 @@ class Round {
     this.player1Score;
     this.player2Score;
     this.player3Score;
+    this.dailyDouble;
   }
 
   //   evaluateGuess(guess) {
@@ -79,6 +80,10 @@ class Round {
   //   generateBoard() {
   // 
   //   }
+
+  dailyDouble() {
+    this.dailyDouble = new DailyDouble(this.categories, this.clues);
+  }
 
 }
 export default Round;
