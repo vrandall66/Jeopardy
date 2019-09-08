@@ -14,14 +14,11 @@ const domUpdates = {
         $('.clue-box').hide()
     },
 
-    showClue() {
+    showClue(clue) {
         $('.main').hide();
         $('.clue-box').show();
         $('.clue-box').fadeIn();
-    },
-
-    firstRowClues() {
-       
+        $('#clue').text(clue.question)
     },
 
     appendCategoryNames(categories) {
@@ -32,15 +29,19 @@ const domUpdates = {
     },
 
     assignClues(gameData) {
-        console.log(gameData[0].id);
+        console.log('gameData', gameData);
         $('td:contains("100")').each((index, td) => {
-            console.log(td, index)
-            // td.data('data-clue-id', gameData[index].id);
-            // how to create new attribute using jquery
-                // how to refer to an item within a loop
+
         });
-        console.log($('td'));
+    },
+
+    createBoard(categoryData) {
+        $('.game-board').append(categoryData);
     }
 }
 
 export default domUpdates;
+// console.log('whatareyou', td)
+// // td.data('data-clue-id', gameData[index].id);
+// // how to create new attribute using jquery
+//     // how to refer to an item within a loop
