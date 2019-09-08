@@ -98,9 +98,9 @@ class Game {
     this.startFinalRound();
   };
 
-  startFinalRound() {
-    this.finalRound = new FinalRound(category, clue);
-  };
+  // startFinalRound() {
+  //   this.finalRound = new FinalRound(category, clue);
+  // };
 
 }
 

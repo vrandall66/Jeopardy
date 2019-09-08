@@ -81,9 +81,9 @@ class Round {
   // 
   //   }
 
-  dailyDouble() {
-    this.dailyDouble = new DailyDouble(this.categories, this.clues);
-  }
+  // dailyDouble() {
+  //   this.dailyDouble = new DailyDouble(this.categories, this.clues);
+  // }
 
 }
 export default Round;
