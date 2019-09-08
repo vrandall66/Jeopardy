@@ -120,6 +120,7 @@ function createGameBoard() {
                 text: key,
                 id: key,
                 class: 'categoryData',
+
                 click: function() {
                     domUpdates.showClue(value)
                 }
