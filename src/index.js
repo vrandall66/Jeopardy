@@ -13,8 +13,8 @@ let game;
 let data;
 
 fetch("https://fe-apps.herokuapp.com/api/v1/gametime/1903/jeopardy/data")
-    .then(dataResponse => dataResponse.json())
-    .then(dataResponse => data = dataResponse.data)
+    .then(response => response.json())
+    .then(remoteData => data = remoteData.data)
     .catch(error => console.log(error));
 
 let startButton = $('.submit-names')
@@ -22,28 +22,18 @@ startButton.on('click', startGame);
 
 function startGame() {
     domUpdates.showMain();
-    let audio = new Audio('../src/funk.mp3');
-    audio.play();
+    // let audio = new Audio('../src/funk.mp3');
+    // audio.play();
     let playerOne = $('#player-one-name-js').val();
     let playerTwo = $('#player-two-name-js').val();
     let playerThree = $('#player-three-name-js').val();
     game = new Game(playerOne, playerTwo, playerThree, data);
     game.startGame();
-    console.log(createGameBoard())
-    // domUpdates.createBoard();
+    createGameBoard();
     domUpdates.appendPlayerNames(playerOne, playerTwo, playerThree);
     domUpdates.appendCategoryNames(game.categoryNames);
-    // domUpdates.firstRowClues(game.clueByCategory);
-    MotionUI.animateIn('#game-board', 'fade-in');
-    // console.log('data index', data);
+    // MotionUI.animateIn('#game-board', 'fade-in');
 };
-
-$('tr > td').click((e) => {
-    e.preventDefault();
-    game.getClue(e.target.getAttribute('category-id'), e.target.innerText);
-    domUpdates.showClue();
-});
-
 
 // DISCO
 var t = 1;
@@ -103,24 +93,33 @@ function randomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+function getCategoryNames() {
+    categoryNames.map(category => {
+        let rex = /([A-Z])([A-Z])([a-z])|([a-z])([A-Z])/g;
+        return category.category.replace(rex, '$1$4 $2$3$5').toUpperCase();
+    });
+    return categoryNames;
+}
+
 function createGameBoard() {
+    let rex = /([A-Z])([A-Z])([a-z])|([a-z])([A-Z])/g;
     game.gameData.forEach(category => {
-        let categoryContainer = $('<div>', {
-            class: 'trialClue',
-            id: category.name
-        });
-        let categoryName = $('<div>', {
-            text: category.name,
-            class: 'categoryName',
-        })
+         let categoryContainer = $('<div>', {
+             class: 'trialClue',
+             id: category.name
+         });
+         let categoryName = $('<div>', {
+             text: category.name.replace(rex, '$1$4 $2$3$5').toUpperCase(),
+             class: 'categoryName',
+         });
         categoryContainer.append(categoryName)
-        for (let [key, value] of Object.entries(category.clues)) {
-            console.log('value', value)
+        for(let [key, value] of Object.entries(category.clues)) {
             let categoryData = $('<div>', {
                 text: key,
                 id: key,
                 class: 'categoryData',
-                click: function () {
+
+                click: function() {
                     domUpdates.showClue(value)
                 }
             });

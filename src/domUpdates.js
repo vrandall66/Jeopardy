@@ -36,7 +36,7 @@ const domUpdates = {
     },
 
     createBoard(categoryData) {
-        $('.trialBoard').append(categoryData)
+        $('.game-board').append(categoryData);
     }
 }
 

@@ -9,10 +9,10 @@
 
   <body>
     <div class='splash-page'>
-      <div id="discoBallLight"></div>
+      <!-- <div id="discoBallLight"></div>
       <div id="discoBall">
         <div id="discoBallMiddle"></div>
-      </div>
+      </div> -->
       <h1>Welcome To Throwback Trivia</h1>
       <div class='splash-inputs'>
         <label for='player-one'>Player One Name </label>
@@ -26,8 +26,10 @@
     </div>
     <main class='main'>
       <h1>Throwback Trivia</h1>
-      <div class='trialBoard'>
+      <!-- <section class ='game-display'> -->
 
+      <div class='game-board'>
+   
       </div>
       <div class='player-info'>
         <div class='player-display'>
@@ -48,15 +50,17 @@
       </div>
 
     </main>
-    <div class='clue-box'>
-      <div class='clue'>
-        <h2> How's This For A Clue? </h2>
-        <p id='clue'></p>
-        <label for='answer'>Who is/What is:</label>
-        <input type='text' class='answer-input' id='answer-input-js'>
-        <button> Give It A Go </button>
-      </div>
-    </div>
+          <div class='clue-box'>
+            <div class='clue'>
+              <h2> How's This For A Clue? </h2>
+              <p id='clue' class='clue-text'></p>
+              <form>
+                <label for='answer'>Your Answer Here</label>
+                <input type='text' class='answer-input' id='answer-input-js'>
+              </form>
+                <button> Give It A Go </button>
+            </div>
+          </div>
   </body>
 
 </html>
