@@ -28,6 +28,7 @@ class Game {
     this.generateCategoryNamesAndIds();
     this.generateCategories();
     this.getGameData();
+    this.startNewRound();
   };
 
   generatePlayers() {
@@ -40,7 +41,6 @@ class Game {
     this.categoryNamesAndIds = this.categories.map(category => {
       return { category: category[0], id: category[1] };
     });
-    // console.log(this.categoryNamesAndIds);
     return this.categoryNamesAndIds;
   };
 
@@ -98,9 +98,9 @@ class Game {
     this.startFinalRound();
   };
 
-  // startFinalRound() {
-  //   this.finalRound = new FinalRound(category, clue);
-  // };
+  startFinalRound() {
+    // this.finalRound = new FinalRound(category, clue);
+  };
 
 }
 

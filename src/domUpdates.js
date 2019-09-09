@@ -19,19 +19,7 @@ const domUpdates = {
         $('.clue-box').show();
         $('.clue-box').fadeIn();
         $('#clue').text(clue.question)
-    },
-
-    giveItAGo(clue) {
-        let answerInput = $('.answer-input').val();
-        console.log('clue', clue)
-        console.log('clue.answer', clue.answer)
-        console.log('answerInput', answerInput)
-        if (answerInput === clue.answer) {
-            // increment points
-            console.log('correct!');
-        } else {
-            console.log('boooo');
-        }
+        
     },
 
     appendCategoryNames(categories) {
@@ -42,7 +30,6 @@ const domUpdates = {
     },
 
     assignClues(gameData) {
-        console.log('gameData', gameData);
         $('td:contains("100")').each((index, td) => {
 
         });
@@ -54,7 +41,3 @@ const domUpdates = {
 }
 
 export default domUpdates;
-// console.log('whatareyou', td)
-// // td.data('data-clue-id', gameData[index].id);
-// // how to create new attribute using jquery
-//     // how to refer to an item within a loop
