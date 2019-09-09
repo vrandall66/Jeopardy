@@ -1,7 +1,9 @@
 import chai from 'chai';
+import spies from 'chai-spies';
 import Game from '../src/Game';
 import data from '../sampleData/sampleData';
 const expect = chai.expect;
+chai.use(spies);
 
 let game;
 
@@ -19,14 +21,14 @@ describe('Game', () => {
   });
 
   it('should generate category names', () => {
-    expect(game.generateCategoryObjects()).to.eql([{
-      1:1
+    expect(game.generateCategoryNamesAndIds()).to.eql([{
+      1: 1
     }, {
-      2:2
+      2: 2
     }, {
-      3:3
+      3: 3
     }, {
-      4:4
+      4: 4
     }]);
   });
 
@@ -43,7 +45,7 @@ describe('Game', () => {
 
   it('should generate clues given a point value', () => {
     game.generateCategoryNamesAndIds();
-    expect(game.generateClues(100)).to.eql([1,2,3,4]);
+    expect(game.generateClues(100)).to.eql([1, 2, 3, 4]);
   });
 
   it('should sort the clues by category ID', () => {

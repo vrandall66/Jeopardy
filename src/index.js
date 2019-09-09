@@ -10,7 +10,7 @@ $('.main').hide();
 $('.clue-box').hide();
 
 let game;
-let data;
+let data, key, value;
 
 fetch("https://fe-apps.herokuapp.com/api/v1/gametime/1903/jeopardy/data")
     .then(response => response.json())
@@ -75,7 +75,7 @@ for (var t = fuzzy; t < Math.PI; t += inc) {
         var y = radius * Math.sin(i) * Math.sin(t);
         square.style.webkitTransform = "translateX(" + Math.ceil(x) + "px) translateY(" + y + "px) translateZ(" + z + "px)";
         square.style.transform = "translateX(" + x + "px) translateY(" + y + "px) translateZ(" + z + "px)";
-        discoBall.appendChild(square);
+        // discoBall.appendChild(square);
     }
 }
 
@@ -113,13 +113,14 @@ function createGameBoard() {
              class: 'categoryName',
          });
         categoryContainer.append(categoryName)
-        for(let [key, value] of Object.entries(category.clues)) {
+        for([key, value] of Object.entries(category.clues)) {
             let categoryData = $('<div>', {
                 text: key,
                 id: key,
                 class: 'categoryData',
 
                 click: function() {
+                    console.log('value', value)
                     domUpdates.showClue(value)
                 }
             });
@@ -128,3 +129,12 @@ function createGameBoard() {
         domUpdates.createBoard(categoryContainer)
     });
 }
+
+let submitGuess = $('.give-it-a-go');
+submitGuess.on('click', checkAnswer);
+
+function checkAnswer(value) {
+    console.log('value', value)
+    domUpdates.giveItAGo(value);
+}
+

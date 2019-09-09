@@ -21,6 +21,19 @@ const domUpdates = {
         $('#clue').text(clue.question)
     },
 
+    giveItAGo(clue) {
+        let answerInput = $('.answer-input').val();
+        console.log('clue', clue)
+        console.log('clue.answer', clue.answer)
+        console.log('answerInput', answerInput)
+        if (answerInput === clue.answer) {
+            // increment points
+            console.log('correct!');
+        } else {
+            console.log('boooo');
+        }
+    },
+
     appendCategoryNames(categories) {
         $('#category1').text(categories[0]);
         $('#category2').text(categories[1]);
