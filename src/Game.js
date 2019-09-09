@@ -28,6 +28,7 @@ class Game {
     this.generateCategoryNamesAndIds();
     this.generateCategories();
     this.getGameData();
+    this.generateDailyDouble();
   };
 
   generatePlayers() {
@@ -40,7 +41,6 @@ class Game {
     this.categoryNamesAndIds = this.categories.map(category => {
       return { category: category[0], id: category[1] };
     });
-    // console.log(this.categoryNamesAndIds);
     return this.categoryNamesAndIds;
   };
 
@@ -50,7 +50,7 @@ class Game {
       return category.category.replace(rex, '$1$4 $2$3$5').toUpperCase();
     });
     return this.categoryNames;
-  }
+  };
 
   getGameData() {
     this.gameData = this.data && this.categoryNamesAndIds.map(cat => {
@@ -58,37 +58,47 @@ class Game {
       return ({
         id: cat.id,
         name: cat.category,
-        clues
+        clues,
       });
-    })
+    });
     domUpdates.assignClues(this.gameData);
-  }
+  };
 
   getCatClues(id) {
     const clue1Index = this.data.clues.findIndex(clue => clue.categoryId === id && clue.pointValue === 100);
     const clue2Index = this.data.clues.findIndex(clue => clue.categoryId === id && clue.pointValue === 200);
     const clue3Index = this.data.clues.findIndex(clue => clue.categoryId === id && clue.pointValue === 300);
     const clue4Index = this.data.clues.findIndex(clue => clue.categoryId === id && clue.pointValue === 400);
-    const result = ({
+    this.clues = ({
       100: {
         question: this.data.clues[clue1Index].question,
-        answer: this.data.clues[clue1Index].answer
+        answer: this.data.clues[clue1Index].answer,
+        isDailyDouble: false
       },
       200: {
         question: this.data.clues[clue2Index].question,
-        answer: this.data.clues[clue2Index].answer
+        answer: this.data.clues[clue2Index].answer,
+        isDailyDouble: false
       },
       300: {
         question: this.data.clues[clue3Index].question,
-        answer: this.data.clues[clue3Index].answer
+        answer: this.data.clues[clue3Index].answer,
+        isDailyDouble: false
       },
       400: {
         question: this.data.clues[clue4Index].question,
-        answer: this.data.clues[clue4Index].answer
+        answer: this.data.clues[clue4Index].answer,
+        isDailyDouble: false
       },
     });
-    return result;
-  }
+    return this.clues;
+  };
+
+  generateDailyDouble() {
+    let randomIndex = Math.floor(Math.random() * (3 - 0)) + 0
+    let dailyDouble = this.gameData[randomIndex];
+    console.log('dailyDouble', dailyDouble.clues);
+  };
 
   startNewRound() {
     this.roundCounter++;
@@ -101,7 +111,6 @@ class Game {
   // startFinalRound() {
   //   this.finalRound = new FinalRound(category, clue);
   // };
-
 }
 
 export default Game;

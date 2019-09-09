@@ -35,7 +35,6 @@ describe('Game', () => {
     expect(game.generateClues(100)).to.eql('');
   });
 
-
   it('should generate the category name', () => {
     game.generateCategoryNamesAndIds();
     expect(game.generateCategories()).to.eql('')
@@ -48,12 +47,17 @@ describe('Game', () => {
 
   it('should sort the clues by category ID', () => {
     game.generateCategoryNamesAndIds();
-    game.generateClues(100);
     expect(game.sortCategories()).to.eql('')
-  })
+  });
 
   it('should get Game Data', () => {
     expect(game.getGameData()).to.eql('')
-  })
+  });
 
+  it.only('should generate a random Daily Double', () => {
+    game.generateCategoryNamesAndIds();
+    game.getGameData();
+    game.getCatClues();
+    expect(game.generateDailyDouble()).to.eql('');
+  });
 });
