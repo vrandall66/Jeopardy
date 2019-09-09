@@ -98,7 +98,7 @@ class Game {
   generateDailyDouble() {
     let randomIndex = Math.floor(Math.random() * (3 - 0)) + 0
     let dailyDouble = Object.values(this.clues)
-    return dailyDouble[randomIndex].isDailyDouble === true
+    return dailyDouble[randomIndex].isDailyDouble = true
   };
 
   startNewRound() {

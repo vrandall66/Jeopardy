@@ -14,13 +14,6 @@ const domUpdates = {
         $('.clue-box').hide()
     },
 
-    showClue(clue) {
-        $('.main').hide();
-        $('.clue-box').show();
-        $('.clue-box').fadeIn();
-        $('#clue').text(clue.question)
-    },
-
     appendCategoryNames(categories) {
         $('#category1').text(categories[0]);
         $('#category2').text(categories[1]);
@@ -28,11 +21,17 @@ const domUpdates = {
         $('#category4').text(categories[3]);
     },
 
-    assignClues(gameData) {
-        // console.log('gameData', gameData);
-        // $('td:contains("100")').each((index, td) => {
+    showClue(clue) {
+        $('.main').hide();
+        // $('.clue-box').show();
+        $('.clue-box').fadeIn();
+        $('#clue').text(clue.question)
+    },
 
-        // });
+    showDailyDouble() {
+        $('.main').hide();
+        $('.clue-box').show()
+        $('.#clue').text(clue.question)
     },
 
     createBoard(categoryData) {
