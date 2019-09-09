@@ -77,13 +77,5 @@ class Round {
     return this.currentPlayer = this.players[0]
   }
 
-  //   generateBoard() {
-  // 
-  //   }
-
-  // dailyDouble() {
-  //   this.dailyDouble = new DailyDouble(this.categories, this.clues);
-  // }
-
 }
 export default Round;

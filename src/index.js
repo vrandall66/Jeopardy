@@ -1,10 +1,8 @@
 import $ from 'jquery';
 import './css/base.scss';
 import Game from './Game';
-// import data from '../sampleData/sampleData';
 import domUpdates from './domUpdates';
 
-// console.log('This is the JavaScript entry file - your code begins here.');
 $('.splash-page').show();
 $('.main').hide();
 $('.clue-box').hide();
@@ -15,15 +13,13 @@ let data;
 fetch("https://fe-apps.herokuapp.com/api/v1/gametime/1903/jeopardy/data")
     .then(response => response.json())
     .then(remoteData => data = remoteData.data)
-    .catch(error => console.log(error));
+    .catch(error => console.log(error))
 
-let startButton = $('.submit-names')
+// START GAME
+let startButton = $('.submit-names');
 startButton.on('click', startGame);
-
 function startGame() {
     domUpdates.showMain();
-    // let audio = new Audio('../src/funk.mp3');
-    // audio.play();
     let playerOne = $('#player-one-name-js').val();
     let playerTwo = $('#player-two-name-js').val();
     let playerThree = $('#player-three-name-js').val();
@@ -99,32 +95,34 @@ function getCategoryNames() {
         return category.category.replace(rex, '$1$4 $2$3$5').toUpperCase();
     });
     return categoryNames;
-}
+};
 
 function createGameBoard() {
     let rex = /([A-Z])([A-Z])([a-z])|([a-z])([A-Z])/g;
     game.gameData.forEach(category => {
-         let categoryContainer = $('<div>', {
-             class: 'trialClue',
-             id: category.name
-         });
-         let categoryName = $('<div>', {
-             text: category.name.replace(rex, '$1$4 $2$3$5').toUpperCase(),
-             class: 'categoryName',
-         });
-        categoryContainer.append(categoryName)
+        let categoryContainer = $('<div>', {
+            class: 'trialClue',
+            id: category.name
+        });
+        let categoryName = $('<div>', {
+            text: category.name.replace(rex, '$1$4 $2$3$5').toUpperCase(),
+            class: 'categoryName'
+        });
+        categoryContainer.append(categoryName);
         for(let [key, value] of Object.entries(category.clues)) {
             let categoryData = $('<div>', {
                 text: key,
                 id: key,
                 class: 'categoryData',
-
                 click: function() {
-                    domUpdates.showClue(value)
+// here we need a conditional like if game.dailyDouble or isDailyDouble = true
+// then domUpdates.showDailyDouble() else
+// domUpdates.showClue()
+                    domUpdates.showClue(value);
                 }
             });
-            categoryContainer.append(categoryData)
+            categoryContainer.append(categoryData);
         }
-        domUpdates.createBoard(categoryContainer)
+        domUpdates.createBoard(categoryContainer);
     });
 }
