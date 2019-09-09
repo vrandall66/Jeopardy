@@ -142,6 +142,10 @@ button {
   font-size: 1.5em;
 }
 
+.answer-text {
+  display:none;
+}
+
 @keyframes popout {
   from {
     transform: scale(0)
