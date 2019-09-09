@@ -14,23 +14,11 @@ class Round {
     this.dailyDouble;
   }
 
-  //   evaluateGuess(guess) {
-  // deal with formatting the user input aka guess
-  // if user guess is wrong, incorrectGuess();
-  // if user guess is right, correctGuess()
-  //   }
-
-  assessIncorrectGuess(guess) {
-   this.clues.filter(clue => {
-      let newScore;
-      if (guess !== clue.answer) {
-        newScore = this.currentPlayer.score = this.currentPlayer.score - clue.pointValue
-      }
-      return newScore
-    })
-    return this.currentPlayer.score
-  // update DOM
-  // boo-hoo
+  decrementScore(clue) {
+    this.currentPlayer.score = this.currentPlayer.score - clue.pointValue
+    this.changePlayer();
+    // update DOM
+    // boo-hoo
   }
 
   changePlayerWhenIncorrect() {
@@ -39,20 +27,14 @@ class Round {
     return this.currentPlayer
   }
 
-  assessCorrectGuess(guess) {
-    this.clues.filter( clue => {
-     if (clue.answer === guess) {
-       this.currentPlayer.score += clue.pointValue
-      }
-      return this.currentPlayer.score
-    })
+  incrementScore(clue) {
+    this.currentPlayer.score += clue.pointValue;
     this.changePlayer();
-    return this.currentPlayer
-  // update DOM
-  // YIPEE!!!
+    // update DOM
+    // YIPEE!!!
   }
 
-  
+
 
   //   endRound() {
   //     this.turnCounter = 0
@@ -76,6 +58,10 @@ class Round {
     this.turnCounter = 0;
     return this.currentPlayer = this.players[0]
   }
+
+  // dailyDouble() {
+  //   this.dailyDouble = new DailyDouble(this.categories, this.clues);
+  // }
 
 }
 export default Round;

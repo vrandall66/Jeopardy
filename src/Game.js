@@ -29,7 +29,7 @@ class Game {
     this.generateCategoryNamesAndIds();
     this.generateCategories();
     this.getGameData();
-    this.generateDailyDouble();
+    this.startNewRound();
   };
 
   generatePlayers() {
@@ -110,6 +110,10 @@ class Game {
       this.round = new Round(this.players, this.clues, this.categoryNames)
     }
     this.startFinalRound();
+  };
+
+  startFinalRound() {
+    // this.finalRound = new FinalRound(category, clue);
   };
 
 }

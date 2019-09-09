@@ -1,6 +1,8 @@
 import $ from 'jquery';
 import './css/base.scss';
 import Game from './Game';
+import Round from "./Round";
+// import data from '../sampleData/sampleData';
 import domUpdates from './domUpdates';
 
 $('.splash-page').show();
@@ -110,13 +112,13 @@ function createGameBoard() {
          });
         categoryContainer.append(categoryName)
         for([key, value] of Object.entries(category.clues)) {
-            let categoryData = $('<div>', {
+            let categoryData = $(`<div>`, {
                 text: key,
-                id: key,
+                id: value.answer,
                 class: 'categoryData',
                 click: function() {
-                    console.log('value', value)
-                    domUpdates.showClue(value)
+                    console.log('value', value.answer);
+                    domUpdates.showClue(value);
                 }
             });
             categoryContainer.append(categoryData);
@@ -126,10 +128,25 @@ function createGameBoard() {
 }
 
 let submitGuess = $('.give-it-a-go');
-submitGuess.on('click', checkAnswer);
+submitGuess.on('click', assessGuess);
 
-function checkAnswer(value) {
-    console.log('value', value)
-    domUpdates.giveItAGo(value);
+function findClue() {
+    let question = $('.clue-text').text();
+    let foundClue = data.clues.find(clue => {
+        if (clue.question === question) {
+            return clue;
+        }
+    })
+    return foundClue;
+}
+
+function assessGuess() {
+    let guess = $('#answer-input-js').val();
+    let cardClue = findClue();
+    if (guess === cardClue.answer) {
+        game.round.incrementScore(cardClue);
+    } else {
+        game.round.decrementScore(cardClue);
+    }
 }
 

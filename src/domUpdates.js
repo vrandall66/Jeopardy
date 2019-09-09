@@ -11,20 +11,15 @@ const domUpdates = {
     showMain() {
         $('.splash-page').fadeOut(1000);
         $('.main').delay(1000).fadeIn(2500);
-        $('.clue-box').hide();
+        $('.clue-box').hide()
     },
 
-    giveItAGo(clue) {
-        let answerInput = $('.answer-input').val();
-        console.log('clue', clue)
-        console.log('clue.answer', clue.answer)
-        console.log('answerInput', answerInput)
-        if (answerInput === clue.answer) {
-            // increment points
-            console.log('correct!');
-        } else {
-            console.log('boooo');
-        }
+    showClue(clue) {
+        $('.main').hide();
+        $('.clue-box').show();
+        $('.clue-box').fadeIn();
+        $('#clue').text(clue.question)
+        
     },
 
     appendCategoryNames(categories) {
@@ -48,8 +43,9 @@ const domUpdates = {
     },
 
     assignClues(gameData) {
-        console.log('gameData', gameData);
-        $('td:contains("100")').each((index, td) => {});
+        $('td:contains("100")').each((index, td) => {
+
+        });
     },
 
     createBoard(categoryData) {
