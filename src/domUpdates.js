@@ -29,10 +29,10 @@ const domUpdates = {
     },
 
     assignClues(gameData) {
-        console.log('gameData', gameData);
-        $('td:contains("100")').each((index, td) => {
+        // console.log('gameData', gameData);
+        // $('td:contains("100")').each((index, td) => {
 
-        });
+        // });
     },
 
     createBoard(categoryData) {

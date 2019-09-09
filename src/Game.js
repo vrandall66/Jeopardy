@@ -55,6 +55,7 @@ class Game {
   getGameData() {
     this.gameData = this.data && this.categoryNamesAndIds.map(cat => {
       const clues = this.getCatClues(cat.id);
+      console.log(cat.id)
       return ({
         id: cat.id,
         name: cat.category,
@@ -69,7 +70,7 @@ class Game {
     const clue2Index = this.data.clues.findIndex(clue => clue.categoryId === id && clue.pointValue === 200);
     const clue3Index = this.data.clues.findIndex(clue => clue.categoryId === id && clue.pointValue === 300);
     const clue4Index = this.data.clues.findIndex(clue => clue.categoryId === id && clue.pointValue === 400);
-    this.clues = ({
+    this.clues = {
       100: {
         question: this.data.clues[clue1Index].question,
         answer: this.data.clues[clue1Index].answer,
@@ -90,14 +91,14 @@ class Game {
         answer: this.data.clues[clue4Index].answer,
         isDailyDouble: false
       },
-    });
+    };
     return this.clues;
   };
 
   generateDailyDouble() {
     let randomIndex = Math.floor(Math.random() * (3 - 0)) + 0
-    let dailyDouble = this.gameData[randomIndex];
-    console.log('dailyDouble', dailyDouble.clues);
+    let dailyDouble = Object.values(this.clues)
+    return dailyDouble[randomIndex].isDailyDouble === true
   };
 
   startNewRound() {

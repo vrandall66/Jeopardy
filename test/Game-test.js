@@ -57,7 +57,7 @@ describe('Game', () => {
   it.only('should generate a random Daily Double', () => {
     game.generateCategoryNamesAndIds();
     game.getGameData();
-    game.getCatClues();
+    game.getCatClues(3);
     expect(game.generateDailyDouble()).to.eql('');
   });
 });
