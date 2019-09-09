@@ -17,6 +17,7 @@ class Game {
     this.categoryNames;
     this.clues;
     this.cluesByCategory = [];
+    this.dailyDouble;
     this.roundCounter = 0;
     this.round;
     this.gameData = [];
@@ -97,21 +98,20 @@ class Game {
 
   generateDailyDouble() {
     let randomIndex = Math.floor(Math.random() * (3 - 0)) + 0
-    let dailyDouble = Object.values(this.clues)
-    return dailyDouble[randomIndex].isDailyDouble = true
+    let randomClues = Object.values(this.clues)
+    this.dailyDouble = randomClues[randomIndex].isDailyDouble = true
+    console.log(this.dailyDouble)
+    return this.dailyDouble;
   };
 
   startNewRound() {
     this.roundCounter++;
     if (this.roundCounter < 2) {
-      this.round = new Round(this.players, this.clues, this.categoryNames);
-    };
+      this.round = new Round(this.players, this.clues, this.categoryNames)
+    }
     this.startFinalRound();
   };
 
-  // startFinalRound() {
-  //   this.finalRound = new FinalRound(category, clue);
-  // };
 }
 
 export default Game;

@@ -11,7 +11,7 @@ const domUpdates = {
     showMain() {
         $('.splash-page').fadeOut(1000);
         $('.main').delay(1000).fadeIn(2500);
-        $('.clue-box').hide()
+        $('.clue-box').hide();
     },
 
     appendCategoryNames(categories) {
@@ -23,15 +23,20 @@ const domUpdates = {
 
     showClue(clue) {
         $('.main').hide();
-        // $('.clue-box').show();
-        $('.clue-box').fadeIn();
-        $('#clue').text(clue.question)
+        $('.clue-box').show();
+        $('#clue').text(clue.question);
     },
 
     showDailyDouble() {
         $('.main').hide();
-        $('.clue-box').show()
-        $('.#clue').text(clue.question)
+        $('.clue-box').show();
+        $('.clue-header').text('Daily Double');
+        $('#clue').text(clue.question);
+    },
+
+    assignClues(gameData) {
+        console.log('gameData', gameData);
+        $('td:contains("100")').each((index, td) => {});
     },
 
     createBoard(categoryData) {
@@ -40,7 +45,3 @@ const domUpdates = {
 }
 
 export default domUpdates;
-// console.log('whatareyou', td)
-// // td.data('data-clue-id', gameData[index].id);
-// // how to create new attribute using jquery
-//     // how to refer to an item within a loop

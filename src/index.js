@@ -1,7 +1,6 @@
 import $ from 'jquery';
 import './css/base.scss';
 import Game from './Game';
-// import data from '../sampleData/sampleData';
 import domUpdates from './domUpdates';
 
 $('.splash-page').show();
@@ -16,9 +15,9 @@ fetch("https://fe-apps.herokuapp.com/api/v1/gametime/1903/jeopardy/data")
     .then(remoteData => data = remoteData.data)
     .catch(error => console.log(error))
 
+// START GAME
 let startButton = $('.submit-names');
 startButton.on('click', startGame);
-
 function startGame() {
     domUpdates.showMain();
     let playerOne = $('#player-one-name-js').val();
@@ -96,7 +95,7 @@ function getCategoryNames() {
         return category.category.replace(rex, '$1$4 $2$3$5').toUpperCase();
     });
     return categoryNames;
-}
+};
 
 function createGameBoard() {
     let rex = /([A-Z])([A-Z])([a-z])|([a-z])([A-Z])/g;
@@ -116,6 +115,9 @@ function createGameBoard() {
                 id: key,
                 class: 'categoryData',
                 click: function() {
+// here we need a conditional like if game.dailyDouble or isDailyDouble = true
+// then domUpdates.showDailyDouble() else
+// domUpdates.showClue()
                     domUpdates.showClue(value);
                 }
             });
@@ -124,4 +126,3 @@ function createGameBoard() {
         domUpdates.createBoard(categoryContainer);
     });
 }
-
