@@ -118,6 +118,9 @@ function createGameBoard() {
                 class: 'categoryData',
                 click: function() {
                     console.log('value', value.answer);
+                    if (value.isDailyDouble) {
+                        domUpdates.showDailyDouble(value)
+                    }
                     domUpdates.showClue(value);
                 }
             });

@@ -14,14 +14,6 @@ const domUpdates = {
         $('.clue-box').hide()
     },
 
-    showClue(clue) {
-        $('.main').hide();
-        $('.clue-box').show();
-        $('.clue-box').fadeIn();
-        $('#clue').text(clue.question)
-        
-    },
-
     appendCategoryNames(categories) {
         $('#category1').text(categories[0]);
         $('#category2').text(categories[1]);
@@ -35,7 +27,7 @@ const domUpdates = {
         $('#clue').text(clue.question);
     },
 
-    showDailyDouble() {
+    showDailyDouble(clue) {
         $('.main').hide();
         $('.clue-box').show();
         $('.clue-header').text('Daily Double');
