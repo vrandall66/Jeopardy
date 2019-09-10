@@ -86,11 +86,19 @@ button {
   font-family: $main-font;
   font-size: 1.5em;
   height: 40px;
-  margin-left: 45%;
   width: 200px;
   &:hover {
   border: dotted 3px $button-hover-color;
   } 
+}
+
+form {
+  display: grid;
+}
+
+.submit-names {
+    margin-left: 45%;
+
 }
 
 .game-display {

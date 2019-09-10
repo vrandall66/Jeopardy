@@ -30,8 +30,14 @@ function startGame() {
     createGameBoard();
     domUpdates.appendPlayerNames(playerOne, playerTwo, playerThree);
     domUpdates.appendCategoryNames(game.categoryNames);
+    updatePlayerScores(game.player1, game.player2, game.player3);
     // MotionUI.animateIn('#game-board', 'fade-in');
 };
+
+$('.daily-double-wager-btn').on('click', makeWager)
+function makeWager() {
+    domUpdates.showClue();
+}
 
 // DISCO
 var t = 1;
@@ -102,14 +108,14 @@ function getCategoryNames() {
 function createGameBoard() {
     let rex = /([A-Z])([A-Z])([a-z])|([a-z])([A-Z])/g;
     game.gameData.forEach(category => {
-         let categoryContainer = $('<div>', {
-             class: 'trialClue',
-             id: category.name
-         });
-         let categoryName = $('<div>', {
-             text: category.name.replace(rex, '$1$4 $2$3$5').toUpperCase(),
-             class: 'categoryName',
-         });
+        let categoryContainer = $('<div>', {
+            class: 'trialClue',
+            id: category.name
+        });
+        let categoryName = $('<div>', {
+            text: category.name.replace(rex, '$1$4 $2$3$5').toUpperCase(),
+            class: 'categoryName',
+        });
         categoryContainer.append(categoryName)
         for([key, value] of Object.entries(category.clues)) {
             let categoryData = $(`<div>`, {
@@ -117,10 +123,11 @@ function createGameBoard() {
                 id: value.answer,
                 class: 'categoryData',
                 click: function() {
+                    // value.isDailyDouble = true;
                     console.log('value', value.answer);
                     console.log('dailyDouble', value.isDailyDouble)
                     if (value.isDailyDouble) {
-                        domUpdates.showDailyDouble(value)
+                        // domUpdates.showDailyDouble(value)
                     }
                     domUpdates.showClue(value);
                 }
@@ -132,7 +139,12 @@ function createGameBoard() {
 }
 
 let submitGuess = $('.give-it-a-go');
-submitGuess.on('click', assessGuess);
+submitGuess.on('click', handleSubmitBtn);
+
+function handleSubmitBtn() {
+    assessGuess();
+    domUpdates.hideClue();
+};
 
 function findClue() {
     let question = $('.clue-text').text();
@@ -152,5 +164,12 @@ function assessGuess() {
     } else {
         game.round.decrementScore(cardClue);
     }
+    updatePlayerScores(game.player1, game.player2, game.player3);
 }
 
+
+function updatePlayerScores(player1, player2, player3) {
+    domUpdates.updateScores(player1, player2, player3);
+}
+
+//UPDATE SCORE
