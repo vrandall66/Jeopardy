@@ -44,7 +44,7 @@ const domUpdates = {
     showClue(clue) {
         $('.main').hide();
         $('.clue-box').show();
-        $('#clue').text(clue.question);
+        $('#clue').text(clue);
     },
 
     showDailyDouble() {

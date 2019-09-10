@@ -21,15 +21,8 @@ describe('Game', () => {
   });
 
   it('should generate category names', () => {
-    expect(game.generateCategoryNamesAndIds()).to.eql([{
-      1: 1
-    }, {
-      2: 2
-    }, {
-      3: 3
-    }, {
-      4: 4
-    }]);
+    game.generateCategoryNamesAndIds();
+    expect(game.categoryNamesAndIds.length).to.eql(4);
   });
 
   it('should generate clues for the given categories', () => {
@@ -56,7 +49,7 @@ describe('Game', () => {
     expect(game.getGameData()).to.eql('')
   });
 
-  it.only('should generate a random Daily Double', () => {
+  it('should generate a random Daily Double', () => {
     game.generateCategoryNamesAndIds();
     game.getGameData();
     game.getCatClues(3);

@@ -146,6 +146,11 @@ button {
   display:none;
 }
 
+.categoryName,
+.categoryData {
+  font-family: 'Fredoka One', cursive;
+}
+
 @keyframes popout {
   from {
     transform: scale(0)
