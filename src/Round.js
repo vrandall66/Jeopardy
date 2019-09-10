@@ -21,19 +21,19 @@ class Round {
     // boo-hoo
   }
 
-  changePlayerWhenIncorrect() {
-    this.assessIncorrectGuess('');
-    this.changePlayer();
-    return this.currentPlayer
-  }
-
+  
   incrementScore(clue) {
     this.currentPlayer.score += clue.pointValue;
     this.changePlayer();
     // update DOM
     // YIPEE!!!
   }
-
+  
+  // changePlayerWhenIncorrect() {
+  //   this.assessIncorrectGuess('');
+  //   this.changePlayer();
+  //   return this.currentPlayer
+  // }
 
 
   //   endRound() {

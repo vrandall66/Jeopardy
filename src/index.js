@@ -30,6 +30,7 @@ function startGame() {
     createGameBoard();
     domUpdates.appendPlayerNames(playerOne, playerTwo, playerThree);
     domUpdates.appendCategoryNames(game.categoryNames);
+    updatePlayerScores(game.player1, game.player2, game.player3);
     // MotionUI.animateIn('#game-board', 'fade-in');
 };
 
@@ -128,7 +129,12 @@ function createGameBoard() {
 }
 
 let submitGuess = $('.give-it-a-go');
-submitGuess.on('click', assessGuess);
+submitGuess.on('click', handleSubmitBtn);
+
+function handleSubmitBtn() {
+    assessGuess();
+    domUpdates.hideClue();
+};
 
 function findClue() {
     let question = $('.clue-text').text();
@@ -148,5 +154,12 @@ function assessGuess() {
     } else {
         game.round.decrementScore(cardClue);
     }
+    updatePlayerScores(game.player1, game.player2, game.player3);
 }
 
+
+function updatePlayerScores(player1, player2, player3) {
+    domUpdates.updateScores(player1, player2, player3);
+}
+
+//UPDATE SCORE

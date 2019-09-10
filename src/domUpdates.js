@@ -8,6 +8,12 @@ const domUpdates = {
         $('.player-three-display').text(playerThree);
     },
 
+    updateScores(player1, player2, player3) {
+        $('.player-one-score').text(player1.score)
+        $('.player-two-score').text(player2.score)
+        $('.player-three-score').text(player3.score)
+    },
+
     showMain() {
         $('.splash-page').fadeOut(1000);
         $('.main').delay(1000).fadeIn(2500);
@@ -20,6 +26,12 @@ const domUpdates = {
         $('.clue-box').fadeIn();
         $('#clue').text(clue.question)
         
+    },
+
+    hideClue() {
+        $('.main').show();
+        $('.clue-box').hide();
+        $('.clue-box').fadeOut();
     },
 
     appendCategoryNames(categories) {
