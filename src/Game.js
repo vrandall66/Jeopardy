@@ -30,6 +30,7 @@ class Game {
     this.generateCategories();
     this.getGameData();
     this.startNewRound();
+    this.generateDailyDouble();
   };
 
   generatePlayers() {
@@ -93,15 +94,24 @@ class Game {
         isDailyDouble: false
       },
     };
+
     return this.clues;
   };
 
+  // generateDailyDouble() {
+  //   let randomIndex = Math.floor(Math.random() * (3 - 0)) + 0
+  //   let randomClues = Object.values(this.clues)
+  //   randomClues[randomIndex].isDailyDouble = true
+  //   return this.clues;
+  // };
+
   generateDailyDouble() {
-    let randomIndex = Math.floor(Math.random() * (3 - 0)) + 0
-    let randomClues = Object.values(this.clues)
-    this.dailyDouble = randomClues[randomIndex].isDailyDouble = true
-    console.log(this.dailyDouble)
-    return this.dailyDouble;
+    let randomCatIndex = Math.floor(Math.random() * (3))
+    let randomClueIndex = Math.floor(Math.random() * (3))
+    let randomCategory = this.gameData[randomCatIndex];
+    let randomClue = Object.values(randomCategory.clues)[randomClueIndex];
+    randomClue.isDailyDouble = true;
+    return this.gameData;
   };
 
   startNewRound() {

@@ -118,6 +118,7 @@ function createGameBoard() {
                 class: 'categoryData',
                 click: function() {
                     console.log('value', value.answer);
+                    console.log('dailyDouble', value.isDailyDouble)
                     if (value.isDailyDouble) {
                         domUpdates.showDailyDouble(value)
                     }
