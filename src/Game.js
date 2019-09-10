@@ -30,6 +30,7 @@ class Game {
     this.generateCategories();
     this.getGameData();
     this.startNewRound();
+    this.generateDailyDouble();
   };
 
   generatePlayers() {
@@ -56,7 +57,6 @@ class Game {
   getGameData() {
     this.gameData = this.data && this.categoryNamesAndIds.map(cat => {
       const clues = this.getCatClues(cat.id);
-      console.log(cat.id)
       return ({
         id: cat.id,
         name: cat.category,
@@ -100,7 +100,6 @@ class Game {
     let randomIndex = Math.floor(Math.random() * (3 - 0)) + 0
     let randomClues = Object.values(this.clues)
     this.dailyDouble = randomClues[randomIndex].isDailyDouble = true
-    console.log(this.dailyDouble)
     return this.dailyDouble;
   };
 

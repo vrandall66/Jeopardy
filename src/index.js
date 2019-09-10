@@ -102,6 +102,7 @@ function getCategoryNames() {
 
 function createGameBoard() {
     let rex = /([A-Z])([A-Z])([a-z])|([a-z])([A-Z])/g;
+    console.log(game.gameData);
     game.gameData.forEach(category => {
          let categoryContainer = $('<div>', {
              class: 'trialClue',
@@ -116,10 +117,11 @@ function createGameBoard() {
             let categoryData = $(`<div>`, {
                 text: key,
                 id: value.answer,
+                ["data-id"]: value.question,
                 class: 'categoryData',
-                click: function() {
-                    console.log('value', value.answer);
-                    domUpdates.showClue(value);
+                click: function(e) {
+                    let question = e.target.closest('div').dataset.id;
+                    domUpdates.showClue(question);
                 }
             });
             categoryContainer.append(categoryData);
