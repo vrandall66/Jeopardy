@@ -1,6 +1,3 @@
-// round 1 will need to instantiate daily double once
-// round 2 will have to instantiate daily double twice
-
 class Round {
   constructor(players, clues, categories) {
     this.turnCounter = 0;
@@ -17,28 +14,14 @@ class Round {
   decrementScore(clue) {
     this.currentPlayer.score = this.currentPlayer.score - clue.pointValue
     this.changePlayer();
-    // update DOM
-    // boo-hoo
   }
 
   
   incrementScore(clue) {
     this.currentPlayer.score += clue.pointValue;
     this.changePlayer();
-    // update DOM
-    // YIPEE!!!
   }
-  
-  // changePlayerWhenIncorrect() {
-  //   this.assessIncorrectGuess('');
-  //   this.changePlayer();
-  //   return this.currentPlayer
-  // }
 
-
-  //   endRound() {
-  //     this.turnCounter = 0
-  //   }
 
   changePlayer() {
     if (this.currentPlayer === this.players[0]) {
@@ -58,10 +41,6 @@ class Round {
     this.turnCounter = 0;
     return this.currentPlayer = this.players[0]
   }
-
-  // dailyDouble() {
-  //   this.dailyDouble = new DailyDouble(this.categories, this.clues);
-  // }
 
 }
 export default Round;
