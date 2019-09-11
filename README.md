@@ -21,5 +21,5 @@ The users must enter their names to and click the "Submit" button to start the g
 
 ## Demo
 
-![Video clip of first part of game](images/Gif-1.gif)
-![Video clip of first part of game](images/Gif-2.gif)
+![Video clip of first part of game](src/images/Gif-1.gif)
+![Video clip of first part of game](src/images/Gif-2.gif)
