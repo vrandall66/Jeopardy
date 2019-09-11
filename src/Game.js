@@ -99,7 +99,7 @@ class Game {
   generateDailyDouble() {
     let randomIndex = Math.floor(Math.random() * (3 - 0)) + 0
     let randomClues = Object.values(this.clues)
-    this.dailyDouble = randomClues[randomIndex].isDailyDouble = true
+    this.dailyDouble = randomClues[randomIndex].isDailyDouble = true;
     return this.dailyDouble;
   };
 
@@ -108,11 +108,6 @@ class Game {
     if (this.roundCounter < 2) {
       this.round = new Round(this.players, this.clues, this.categoryNames)
     }
-    this.startFinalRound();
-  };
-
-  startFinalRound() {
-    // this.finalRound = new FinalRound(category, clue);
   };
 
 }

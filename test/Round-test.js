@@ -37,14 +37,6 @@ describe('Round', () => {
     expect(round.categories).to.eql(['lifeSciences'])
   });
 
-  it('should decrement the current player\'s score if they answer incorrectly' , () => {
-    expect(round.assessIncorrectGuess('hi')).to.equal(-400)
-  })
-
-  it('should return the updated player object', () => { 
-    expect(round.assessCorrectGuess('yellow journalism')).to.eql({ name: 'Naomi', score: 0 })
-  });
-
   it('should change players after an incorrect guess', () => {
     round.assessIncorrectGuess('');
     expect(round.changePlayerWhenIncorrect()).to.eql({ name: 'Naomi', score: 0 })

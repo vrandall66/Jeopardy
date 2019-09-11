@@ -26,13 +26,13 @@ describe('Game', () => {
   });
 
   it('should generate clues for the given categories', () => {
-    game.generateCategoryNamesAndIds();
-    expect(game.generateClues(100)).to.eql('');
+    game.generateCategories();
+    expect(game.generateCategories.length).to.eql(4);
   });
 
   it('should generate the category name', () => {
     game.generateCategoryNamesAndIds();
-    expect(game.generateCategories()).to.eql('')
+    expect(game.generateCategories.length).to.eql(4);
   });
 
   it('should generate clues given a point value', () => {
